@@ -25,7 +25,8 @@ public class FiltroActivity extends Activity {
         categoriaButton = (Button) findViewById(R.id.buttonCategoria);
         cuerpoButton = (Button) findViewById(R.id.buttonCuerpo);
         setUiEnabled(true);
-        Tiempo(3);
+        Timer timer = new Timer();
+        Tiempo(timer,5);
     }
 
 
@@ -35,14 +36,13 @@ public class FiltroActivity extends Activity {
         categoriaButton.setEnabled(bool);
     }
 
-    public void Tiempo(int segundos)
+    public void Tiempo(Timer timer,int segundos)
     {
-        Timer timer = new Timer();
         timer.schedule(new TimerTask() {
 
             public void run() {
+                startActivity(new Intent(getApplicationContext(), StartActivity.class));
 
-                
             }
 
         }, segundos*1000);
