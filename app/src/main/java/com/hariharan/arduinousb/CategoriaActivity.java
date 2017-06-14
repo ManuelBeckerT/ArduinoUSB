@@ -152,6 +152,7 @@ public class CategoriaActivity extends Activity {
         String string = "a";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
+        startActivity(new Intent(getApplicationContext(), Fuerza.class));
 
     }
 
@@ -159,6 +160,7 @@ public class CategoriaActivity extends Activity {
         String string = "s";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
+        startActivity(new Intent(getApplicationContext(), Agilidad.class));
 
     }
 
@@ -166,6 +168,7 @@ public class CategoriaActivity extends Activity {
         String string = "d";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
+        startActivity(new Intent(getApplicationContext(), Calentamiento.class));
 
     }
 
@@ -173,6 +176,7 @@ public class CategoriaActivity extends Activity {
         String string = "f";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
+        startActivity(new Intent(getApplicationContext(), Entrenamiento.class));
 
     }
 
