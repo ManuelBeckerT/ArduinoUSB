@@ -1,0 +1,102 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".StartActivity">
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Brazos"
+        android:id="@+id/buttonBrazos"
+        android:onClick="onClickBrazos"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_below="@+id/buttonStop"
+        android:layout_alignLeft="@+id/buttonStop"
+        android:layout_alignStart="@+id/buttonStop" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abdomen"
+        android:id="@+id/buttonAbdomen"
+        android:onClick="onClickAbdomen"
+        android:layout_below="@+id/buttonBrazos"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Piernas"
+        android:id="@+id/buttonPiernas"
+        android:onClick="onClickPiernas"
+        android:layout_below="@+id/buttonAbdomen"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="22dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Espalda"
+        android:id="@+id/buttonEspalda"
+        android:onClick="onClickEspalda"
+        android:layout_alignBaseline="@+id/buttonBrazos"
+        android:layout_alignBottom="@+id/buttonBrazos"
+        android:layout_alignLeft="@+id/buttonGluteo"
+        android:layout_alignStart="@+id/buttonGluteo" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gluteo"
+        android:id="@+id/buttonGluteo"
+        android:onClick="onClickGluteo"
+        android:layout_below="@+id/buttonEspalda"
+        android:layout_alignBaseline="@+id/buttonAbdomen"
+        android:layout_alignBottom="@+id/buttonAbdomen"
+        android:layout_alignRight="@+id/buttonAbdomen"
+        android:layout_alignEnd="@+id/buttonAbdomen" />
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Girar"
+        android:id="@+id/buttonGirar"
+        android:onClick="onClickGirar"
+        android:layout_marginRight="21dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="23dp"
+        android:layout_above="@+id/textView"
+        android:layout_toLeftOf="@+id/buttonAtras"
+        android:layout_toStartOf="@+id/buttonAtras" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Atras"
+        android:id="@+id/buttonAtras"
+        android:onClick="onClickAtras"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

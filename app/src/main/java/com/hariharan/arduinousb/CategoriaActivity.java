@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class CategoriaActivity extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
-    Button D1Button, D2Button, D3Button, clearButton;
+    Button C1Button, C2Button, C3Button, C4Button, clearButton, AtrasButton;
     TextView textView;
     UsbManager usbManager;
     UsbDevice device;
@@ -90,11 +90,13 @@ public class CategoriaActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deporte);
+        setContentView(R.layout.activity_categoria);
         usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
-        D1Button = (Button) findViewById(R.id.buttonD1);
-        D2Button = (Button) findViewById(R.id.buttonD2);
-        D3Button = (Button) findViewById(R.id.buttonD3);
+        C1Button = (Button) findViewById(R.id.buttonC1);
+        C2Button = (Button) findViewById(R.id.buttonC2);
+        C3Button = (Button) findViewById(R.id.buttonC3);
+        C4Button = (Button) findViewById(R.id.buttonC4);
+        AtrasButton = (Button) findViewById(R.id.buttonAtras);
         clearButton = (Button) findViewById(R.id.buttonClear);
         textView = (TextView) findViewById(R.id.textView);
         setUiEnabled(false);
@@ -111,9 +113,10 @@ public class CategoriaActivity extends Activity {
     }
 
     public void setUiEnabled(boolean bool) {
-        D1Button.setEnabled(bool);
-        D2Button.setEnabled(bool);
-        D3Button.setEnabled(bool);
+        C1Button.setEnabled(bool);
+        C2Button.setEnabled(bool);
+        C3Button.setEnabled(bool);
+        C4Button.setEnabled(bool);
         textView.setEnabled(bool);
 
     }
@@ -145,24 +148,36 @@ public class CategoriaActivity extends Activity {
 
     }
 
-    public void onClickD1(View view) {
+    public void onClickC1(View view) {
         String string = "a";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
 
     }
 
-    public void onClickD2(View view) {
-        String string = "b";
+    public void onClickC2(View view) {
+        String string = "s";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
 
     }
 
-    public void onClickD3(View view) {
-        String string = "c";
+    public void onClickC3(View view) {
+        String string = "d";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
+
+    }
+
+    public void onClickC4(View view) {
+        String string = "f";
+        serialPort.write(string.getBytes());
+        tvAppend(textView, "\nData Sent : " + string + "\n");
+
+    }
+
+    public void onClickAtras(View view){
+        startActivity(new Intent(getApplicationContext(), FiltroActivity.class));
 
     }
 

@@ -10,11 +10,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Deporte"
-        android:id="@+id/buttonDeporte"
+        android:text="Mujer"
+        android:id="@+id/buttonMujer"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="onClickDeporte"
+        android:onClick="onClickMujer"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -23,14 +23,14 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Categoria"
-        android:id="@+id/buttonCategoria"
+        android:text="Hombre"
+        android:id="@+id/buttonHombre"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="onClickCategoria"
+        android:onClick="onClickHombre"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonCuerpo"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonAt"
         android:layout_marginTop="125dp"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="118dp"
@@ -40,21 +40,15 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Partes del Cuerpo"
-        android:id="@+id/buttonCuerpo"
+        android:text="Atras"
+        android:id="@+id/buttonAtras"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="onClickCuerpo"
+        android:onClick="onClickAtras"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="220dp"
         app:layout_constraintLeft_toLeftOf="parent" />
-
-
-
-
-
-
 
 </android.support.constraint.ConstraintLayout>

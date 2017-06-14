@@ -10,8 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fuerza"
-        android:id="@+id/buttonD1"
-        android:onClick="onClickD1"
+        android:id="@+id/buttonC1"
+        android:onClick="onClickC1"
         android:layout_marginTop="24dp"
         android:layout_alignParentTop="true"
         android:layout_below="@+id/buttonStop"
@@ -22,22 +22,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Agilidad"
-        android:id="@+id/buttonD2"
-        android:onClick="onClickD2"
+        android:id="@+id/buttonC2"
+        android:onClick="onClickC2"
         android:layout_marginTop="37dp"
-        android:layout_below="@+id/buttonD1"
-        android:layout_alignLeft="@+id/buttonD1"
-        android:layout_alignStart="@+id/buttonD1" />
+        android:layout_below="@+id/buttonC1"
+        android:layout_alignLeft="@+id/buttonC1"
+        android:layout_alignStart="@+id/buttonC1" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Calentamiento"
-        android:id="@+id/buttonD3"
-        android:onClick="onClickD3"
-        android:layout_below="@+id/buttonD2"
-        android:layout_alignLeft="@+id/buttonD2"
-        android:layout_alignStart="@+id/buttonD2"
+        android:id="@+id/buttonC3"
+        android:onClick="onClickC3"
+        android:layout_below="@+id/buttonC2"
+        android:layout_alignLeft="@+id/buttonC2"
+        android:layout_alignStart="@+id/buttonC2"
+        android:layout_marginTop="26dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entrenamiento"
+        android:id="@+id/buttonC4"
+        android:onClick="onClickC4"
+        android:layout_below="@+id/buttonC3"
+        android:layout_alignLeft="@+id/buttonC3"
+        android:layout_alignStart="@+id/buttonC3"
         android:layout_marginTop="26dp" />
 
     <TextView
@@ -58,4 +69,16 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Atras"
+        android:id="@+id/buttonAtras"
+        android:onClick="onClickAtras"
+        android:layout_above="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
 </RelativeLayout>

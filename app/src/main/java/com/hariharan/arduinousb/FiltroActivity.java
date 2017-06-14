@@ -8,6 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
+import android.os.CountDownTimer;
+import  android.view.InputEvent;
+
+import android.view.MotionEvent;
+
 
 
 public class FiltroActivity extends Activity {
@@ -25,28 +30,42 @@ public class FiltroActivity extends Activity {
         categoriaButton = (Button) findViewById(R.id.buttonCategoria);
         cuerpoButton = (Button) findViewById(R.id.buttonCuerpo);
         setUiEnabled(true);
-        Timer timer = new Timer();
-        Tiempo(timer,5);
+       // Timer timer = new Timer();
+        //Tiempo(timer,5);
     }
 
 
     public void setUiEnabled(boolean bool) {
         deporteButton.setEnabled(bool);
         categoriaButton.setEnabled(bool);
-        categoriaButton.setEnabled(bool);
+        cuerpoButton.setEnabled(bool);
     }
 
-    public void Tiempo(Timer timer,int segundos)
+   /* public void Tiempo(Timer timer,int segundos)
     {
-        timer.schedule(new TimerTask() {
+        CountDownTimer countDownTimer = new CountDownTimer(30000, 1000) {
 
-            public void run() {
-                startActivity(new Intent(getApplicationContext(), StartActivity.class));
-
+            public void onTick(long millisUntilFinished) {
+                //TODO: Do something every second
             }
 
-        }, segundos*1000);
-    }
+            public void onFinish() {
+
+                finish();
+                //YourActivity.finish();  outside the actvitiy
+
+            }
+        }.start();*/
+
+     /*   @Override
+        public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            countDownTimer.cancel();
+            countDownTimer.start();
+        }
+        return super.onTouchEvent(event);
+    }*/
+
 
     public void onClickDeporte(View view) {
         startActivity(new Intent(getApplicationContext(), DeporteActivity.class));
@@ -59,9 +78,10 @@ public class FiltroActivity extends Activity {
     }
 
     public void onClickCuerpo(View view) {
-        startActivity(new Intent(getApplicationContext(), CuerpoActivity.class));
+        startActivity(new Intent(getApplicationContext(), Genero.class));
 
     }
+
 
 
     private void tvAppend(TextView tv, CharSequence text) {

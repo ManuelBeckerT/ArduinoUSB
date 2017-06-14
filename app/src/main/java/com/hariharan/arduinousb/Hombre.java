@@ -22,14 +22,16 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DeporteActivity extends Activity {
+public class Hombre extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
-    Button D1Button, D2Button, D3Button, D4Button, D5Button, AtrasButton, clearButton;
+    Button BrazosButton, AbdomenButton, PiernasButton, EspaldaButton, GluteoButton;
+    Button GirarButton, AtrasButton,clearButton;
     TextView textView;
     UsbManager usbManager;
     UsbDevice device;
     UsbSerialDevice serialPort;
     UsbDeviceConnection connection;
+    boolean posicion= true;
 
     UsbSerialInterface.UsbReadCallback mCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
         @Override
@@ -90,17 +92,18 @@ public class DeporteActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deporte);
+        setContentView(R.layout.activity_hombre);
         usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
-        D1Button = (Button) findViewById(R.id.buttonD1);
-        D2Button = (Button) findViewById(R.id.buttonD2);
-        D3Button = (Button) findViewById(R.id.buttonD3);
-        D4Button = (Button) findViewById(R.id.buttonD4);
-        D5Button = (Button) findViewById(R.id.buttonD5);
+        BrazosButton = (Button) findViewById(R.id.buttonBrazos);
+        AbdomenButton = (Button) findViewById(R.id.buttonAbdomen);
+        PiernasButton = (Button) findViewById(R.id.buttonPiernas);
+        EspaldaButton = (Button) findViewById(R.id.buttonEspalda);
+        GluteoButton = (Button) findViewById(R.id.buttonGluteo);
+        GirarButton = (Button) findViewById(R.id.buttonGirar);
         AtrasButton = (Button) findViewById(R.id.buttonAtras);
         clearButton = (Button) findViewById(R.id.buttonClear);
         textView = (TextView) findViewById(R.id.textView);
-        setUiEnabled(false);
+        setUiEnabled(false); //TODO: CAMBIAR A FALSE
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_USB_PERMISSION);
         filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED);
@@ -108,17 +111,38 @@ public class DeporteActivity extends Activity {
         registerReceiver(broadcastReceiver, filter);
         //tvAppend(textView,"Antes de Start");
         Start();
-       // tvAppend(textView,"Despues de Start");
+        Adelante();
+
+        // tvAppend(textView,"Despues de Start");
 
 
     }
 
+
+    public void Adelante() {
+        BrazosButton.setVisibility(View.VISIBLE);
+        AbdomenButton.setVisibility(View.VISIBLE);
+        PiernasButton.setVisibility(View.VISIBLE);
+        EspaldaButton.setVisibility(View.GONE);
+        GluteoButton.setVisibility(View.GONE);
+    }
+
+
+    public void Atras(){
+        BrazosButton.setVisibility(View.GONE);
+        AbdomenButton.setVisibility(View.GONE);
+        PiernasButton.setVisibility(View.GONE   );
+        EspaldaButton.setVisibility(View.VISIBLE);
+        GluteoButton.setVisibility(View.VISIBLE);
+
+    }
+
     public void setUiEnabled(boolean bool) {
-        D1Button.setEnabled(bool);
-        D2Button.setEnabled(bool);
-        D3Button.setEnabled(bool);
-        D4Button.setEnabled(bool);
-        D5Button.setEnabled(bool);
+        BrazosButton.setEnabled(bool);
+        AbdomenButton.setEnabled(bool);
+        PiernasButton.setEnabled(bool);
+        EspaldaButton.setEnabled(bool);
+        GluteoButton.setEnabled(bool);
         textView.setEnabled(bool);
 
     }
@@ -150,47 +174,50 @@ public class DeporteActivity extends Activity {
 
     }
 
-    public void onClickD1(View view) {
-        String string = "q";
+    public void onClickBrazos(View view) {
+        String string = "z";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        startActivity(new Intent(getApplicationContext(), Deporte1.class));
 
     }
 
-    public void onClickD2(View view) {
-        String string = "w";
+    public void onClickAbdomen(View view) {
+        String string = "x";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        startActivity(new Intent(getApplicationContext(), Deporte2.class));
 
     }
-
-    public void onClickD3(View view) {
-        String string = "e";
+    public void onClickPiernas(View view) {
+        String string = "c";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        startActivity(new Intent(getApplicationContext(), Deporte3.class));
 
     }
-
-    public void onClickD4(View view) {
-        String string = "r";
+    public void onClickEspalda(View view) {
+        String string = "v";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        startActivity(new Intent(getApplicationContext(), Deporte4.class));
 
     }
-
-    public void onClickD5(View view) {
-        String string = "t";
+    public void onClickGluteo(View view) {
+        String string = "b";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        startActivity(new Intent(getApplicationContext(), Deporte5.class));
     }
 
+    public void onClickGirar(View view) {
+        if (posicion){
+            Atras();
+            posicion= false;
+        }
+        else {
+            Adelante();
+            posicion=true;
+        }
+
+    }
     public void onClickAtras(View view) {
-        startActivity(new Intent(getApplicationContext(), FiltroActivity.class));
+        startActivity(new Intent(getApplicationContext(), Genero.class));
 
     }
 
