@@ -1,5 +1,10 @@
-package com.hariharan.arduinousb;
+/*TODO:
+Hacer que cuando vuelva se vuelva a aconectar
+despues de x segundo que se reset app
 
+ */
+
+package com.hariharan.arduinousb;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -23,19 +28,51 @@ import com.felhr.usbserial.UsbSerialInterface;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+
+
 
 public class StartActivity extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
     Button startButton;
-    Button D1Button;
     TextView textView;
     EditText editText;
     UsbManager usbManager;
     UsbDevice device;
     UsbSerialDevice serialPort;
     UsbDeviceConnection connection;
-    MediaPlayer sonido;
+    MediaPlayer sonido1;
+    MediaPlayer sonido2;
+    MediaPlayer sonido3;
     boolean tiempo_sonido;
+
+    public void Start() {
+        tvAppend(textView, "Conectando\n");
+        HashMap<String, UsbDevice> usbDevices = usbManager.getDeviceList();
+        if (!usbDevices.isEmpty()) {
+            boolean keep = true;
+            for (Map.Entry<String, UsbDevice> entry : usbDevices.entrySet()) {
+                device = entry.getValue();
+                int deviceVID = device.getVendorId();
+                if (deviceVID == 10755)//Arduino Vendor ID
+                {
+                    PendingIntent pi = PendingIntent.getBroadcast(this, 0, new Intent(ACTION_USB_PERMISSION), 0);
+                    usbManager.requestPermission(device, pi);
+                    keep = false;
+                } else {
+                    connection = null;
+                    device = null;
+                }
+
+                if (!keep)
+                    break;
+            }
+        }
+
+
+    }
+
+
 
     UsbSerialInterface.UsbReadCallback mCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
         @Override
@@ -45,21 +82,18 @@ public class StartActivity extends Activity {
                 data = new String(arg0, "UTF-8");
                 data.concat("/n");
 
-                if (data.contains("50") || data.contains("P") || data==" P" || data=="P " || data==" P/n" || data=="50/n" || data=="0050" ||data=="0050/n") {
-                    tvAppend(textView, "Sonido");
+                if (data.contains("P")) {
+                    //if (data.contains("50") || data.contains("P") || data==" P" || data=="P " || data==" P/n" || data=="50/n" || data=="0050" ||data=="0050/n") {
+
+                    tvAppend(textView, "Sonido\n");
                     star_sonido();
 
                 }
 
-                if (true || false || false){
-                    tvAppend(textView, "funciona or");
-                }
-
-
                 else {
                     //tvAppend(textView, "2\n");
                     //star_sonido();
-                    tvAppend(textView, "data:"+data+"-\n");
+                    //tvAppend(textView, "data:"+data+"-\n");
                 }
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
@@ -68,6 +102,8 @@ public class StartActivity extends Activity {
 
         }
     };
+
+
     private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() { //Broadcast Receiver to automatically start and stop the Serial connection.
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -107,13 +143,14 @@ public class StartActivity extends Activity {
         ;
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
         startButton = (Button) findViewById(R.id.buttonStart);
-        D1Button = (Button) findViewById(R.id.buttonD1);
         editText = (EditText) findViewById(R.id.editText);
         textView = (TextView) findViewById(R.id.textView);
         setUiEnabled(true);
@@ -122,7 +159,9 @@ public class StartActivity extends Activity {
         filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED);
         filter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED);
         registerReceiver(broadcastReceiver, filter);
-        sonido = MediaPlayer.create(this, R.raw.audio_dilab);
+        sonido1 = MediaPlayer.create(this, R.raw.audio_dilab);
+        sonido2 = MediaPlayer.create(this, R.raw.auido_2);
+        sonido3 = MediaPlayer.create(this, R.raw.audio_3);
         tiempo_sonido= true;
         Start();
 
@@ -131,22 +170,32 @@ public class StartActivity extends Activity {
 
 
     public void star_sonido(){
-        sonido.start();
+        Random r = new Random();
+        int i = r.nextInt(3);
+        tvAppend(textView,i+"\n");
+        if (i==1) {
+            sonido1.start();
+        }
+        else if(i==2){
+            sonido2.start();
+        }
+        else{
+            sonido3.start();
+        }
     }
 
     public void setUiEnabled(boolean bool) {
         startButton.setEnabled(bool);
-        D1Button.setEnabled(bool);
         textView.setEnabled(bool);
 
     }
 
-    public void onClickD1(View view) {
+    /*public void onClickD1(View view) {
         String string = "p";
         serialPort.write(string.getBytes());
-    }
+    }*/
 
-    public void Start() {
+    /*public void Start() {
 
         HashMap<String, UsbDevice> usbDevices = usbManager.getDeviceList();
         if (!usbDevices.isEmpty()) {
@@ -171,10 +220,13 @@ public class StartActivity extends Activity {
 
 
     }
-
+*/
     public void onClickStart(View view) {
+        //Stop();
+        //String string = "0";
+        //serialPort.write(string.getBytes());\
         Stop();
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        startActivity(new Intent(getApplicationContext(), FiltroActivity.class));
     }
 
     public void Stop() {

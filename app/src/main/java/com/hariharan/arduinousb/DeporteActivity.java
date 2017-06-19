@@ -150,6 +150,10 @@ public class DeporteActivity extends Activity {
 
     }
 
+
+
+
+
     public void onClickD1(View view) {
         String string = "q";
         serialPort.write(string.getBytes());

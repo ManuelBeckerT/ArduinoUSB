@@ -16,17 +16,7 @@
         android:layout_alignParentStart="true"
         android:onClick="onClickStart"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="sonido"
-        android:id="@+id/buttonD1"
-        android:onClick="onClickD1"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/buttonStart"
-        android:layout_toEndOf="@+id/buttonStart"
-        android:layout_marginLeft="32dp"
-        android:layout_marginStart="32dp" />
+
 
 
 

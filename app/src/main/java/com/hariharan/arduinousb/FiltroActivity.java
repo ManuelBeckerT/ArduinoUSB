@@ -17,10 +17,32 @@ import android.view.MotionEvent;
 
 public class FiltroActivity extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
-    Button deporteButton, categoriaButton, cuerpoButton;
+    Button deporteButton, categoriaButton, cuerpoButton,atrasButton;
 
 
+    CountDownTimer countDownTimer = new CountDownTimer(4000, 1000) {
 
+        public void onTick(long millisUntilFinished) {
+            //TODO: Do something every second
+        }
+
+        public void onFinish() {
+
+            finish();
+            startActivity(new Intent(getApplicationContext(), StartActivity.class));
+
+
+        }
+    }.start();
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            countDownTimer.cancel();
+            countDownTimer.start();
+        }
+        return super.onTouchEvent(event);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +51,8 @@ public class FiltroActivity extends Activity {
         deporteButton = (Button) findViewById(R.id.buttonDeporte);
         categoriaButton = (Button) findViewById(R.id.buttonCategoria);
         cuerpoButton = (Button) findViewById(R.id.buttonCuerpo);
+        atrasButton = (Button) findViewById(R.id.buttonAtras);
+
         setUiEnabled(true);
        // Timer timer = new Timer();
         //Tiempo(timer,5);
@@ -81,6 +105,12 @@ public class FiltroActivity extends Activity {
         startActivity(new Intent(getApplicationContext(), Genero.class));
 
     }
+
+    public void onClickAtras(View view) {
+        startActivity(new Intent(getApplicationContext(), StartActivity.class));
+    }
+
+
 
 
 
