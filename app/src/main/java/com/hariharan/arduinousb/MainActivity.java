@@ -39,8 +39,17 @@ public class MainActivity extends Activity {
             String data = null;
             try {
                 data = new String(arg0, "UTF-8");
-                data.concat("/n");
-                tvAppend(textView, data);
+                //data.concat("/n");
+
+                //if (data=="50"| data=="P"){
+                //    tvAppend(textView, "Sonido");}
+                //Sonido(data);
+                if (data!=""){
+
+                   // tvAppend(textView, "2\n");
+                    tvAppend(textView, "data:"+data+"-\n");
+                }
+
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -160,6 +169,23 @@ public class MainActivity extends Activity {
         textView.setText(" ");
     }
 
+
+    private void Sonido(CharSequence text) {
+        final CharSequence ftext = text;
+        tvAppend(textView, "funcion sonido  ");
+
+        CharSequence a = "P";
+        CharSequence b = "50";
+
+        if (ftext==a| ftext=="P"| ftext=="50" ){
+            tvAppend(textView, "Sonidoo!!");
+
+        }
+        else{
+            tvAppend(textView, "final"+ftext+ "\n");
+        }
+    }
+
     private void tvAppend(TextView tv, CharSequence text) {
         final TextView ftv = tv;
         final CharSequence ftext = text;
@@ -171,6 +197,8 @@ public class MainActivity extends Activity {
             }
         });
     }
+
+
 
     //@Override
     //protected void onDestroy() {
