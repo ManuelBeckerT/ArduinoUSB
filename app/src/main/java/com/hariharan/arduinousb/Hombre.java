@@ -10,7 +10,9 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -32,6 +34,31 @@ public class Hombre extends Activity {
     UsbSerialDevice serialPort;
     UsbDeviceConnection connection;
     boolean posicion= true;
+
+    CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
+
+        public void onTick(long millisUntilFinished) {
+            //TODO: Do something every second
+        }
+
+        public void onFinish() {
+
+            finish();
+            countDownTimer.cancel();
+            startActivity(new Intent(getApplicationContext(), StartActivity.class));
+
+
+        }
+    }.start();
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            countDownTimer.cancel();
+            countDownTimer.start();
+        }
+        return super.onTouchEvent(event);
+    }
 
     UsbSerialInterface.UsbReadCallback mCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
         @Override
@@ -156,7 +183,7 @@ public class Hombre extends Activity {
             for (Map.Entry<String, UsbDevice> entry : usbDevices.entrySet()) {
                 device = entry.getValue();
                 int deviceVID = device.getVendorId();
-                if (deviceVID == 10755)//Arduino Vendor ID
+                if (deviceVID == 9025)//Arduino Vendor ID
                 {
                     PendingIntent pi = PendingIntent.getBroadcast(this, 0, new Intent(ACTION_USB_PERMISSION), 0);
                     usbManager.requestPermission(device, pi);
@@ -217,6 +244,7 @@ public class Hombre extends Activity {
 
     }
     public void onClickAtras(View view) {
+        countDownTimer.cancel();
         startActivity(new Intent(getApplicationContext(), Genero.class));
 
     }

@@ -48,13 +48,14 @@ public class StartActivity extends Activity {
 
     public void Start() {
         tvAppend(textView, "Conectando\n");
+        star_sonido();
         HashMap<String, UsbDevice> usbDevices = usbManager.getDeviceList();
         if (!usbDevices.isEmpty()) {
             boolean keep = true;
             for (Map.Entry<String, UsbDevice> entry : usbDevices.entrySet()) {
                 device = entry.getValue();
                 int deviceVID = device.getVendorId();
-                if (deviceVID == 10755)//Arduino Vendor ID
+                if (deviceVID == 9025)//Arduino Vendor ID
                 {
                     PendingIntent pi = PendingIntent.getBroadcast(this, 0, new Intent(ACTION_USB_PERMISSION), 0);
                     usbManager.requestPermission(device, pi);
@@ -68,7 +69,6 @@ public class StartActivity extends Activity {
                     break;
             }
         }
-
 
     }
 
@@ -93,7 +93,7 @@ public class StartActivity extends Activity {
                 else {
                     //tvAppend(textView, "2\n");
                     //star_sonido();
-                    //tvAppend(textView, "data:"+data+"-\n");
+                    tvAppend(textView, "data:"+data+"-\n");
                 }
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
@@ -172,7 +172,6 @@ public class StartActivity extends Activity {
     public void star_sonido(){
         Random r = new Random();
         int i = r.nextInt(3);
-        tvAppend(textView,i+"\n");
         if (i==1) {
             sonido1.start();
         }
@@ -222,9 +221,8 @@ public class StartActivity extends Activity {
     }
 */
     public void onClickStart(View view) {
-        //Stop();
-        //String string = "0";
-        //serialPort.write(string.getBytes());\
+        String string = "0";
+        serialPort.write(string.getBytes());
         Stop();
         startActivity(new Intent(getApplicationContext(), FiltroActivity.class));
     }
@@ -235,6 +233,12 @@ public class StartActivity extends Activity {
         tvAppend(textView,"\nSerial Connection Closed! \n");
 
     }
+
+    public void Star_sonido(){
+        String string = "1";
+        serialPort.write(string.getBytes());
+    }
+
 
     private void tvAppend(TextView tv, CharSequence text) {
         final TextView ftv = tv;

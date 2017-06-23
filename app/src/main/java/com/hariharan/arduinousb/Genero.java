@@ -17,6 +17,31 @@ public class Genero extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
     Button MujerButton, HombreButton, AtrasButton;
 
+    CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
+
+        public void onTick(long millisUntilFinished) {
+            //TODO: Do something every second
+        }
+
+        public void onFinish() {
+
+            finish();
+            countDownTimer.cancel();
+            startActivity(new Intent(getApplicationContext(), StartActivity.class));
+
+
+        }
+    }.start();
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            countDownTimer.cancel();
+            countDownTimer.start();
+        }
+        return super.onTouchEvent(event);
+    }
+
 
 
 
@@ -40,16 +65,19 @@ public class Genero extends Activity {
 
 
     public void onClickHombre(View view) {
+        countDownTimer.cancel();
         startActivity(new Intent(getApplicationContext(), Hombre.class));
 
     }
 
     public void onClickMujer(View view) {
+        countDownTimer.cancel();
         startActivity(new Intent(getApplicationContext(), Mujer.class));
 
     }
 
     public void onClickAtras(View view) {
+        countDownTimer.cancel();
         startActivity(new Intent(getApplicationContext(), FiltroActivity.class));
 
     }

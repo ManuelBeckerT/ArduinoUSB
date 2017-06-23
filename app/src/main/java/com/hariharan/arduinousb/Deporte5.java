@@ -16,6 +16,30 @@ import android.view.MotionEvent;
 public class Deporte5 extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
     Button MujerButton, HombreButton, AtrasButton;
+    CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
+
+        public void onTick(long millisUntilFinished) {
+            //TODO: Do something every second
+        }
+
+        public void onFinish() {
+
+            finish();
+            countDownTimer.cancel();
+            startActivity(new Intent(getApplicationContext(), StartActivity.class));
+
+
+        }
+    }.start();
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            countDownTimer.cancel();
+            countDownTimer.start();
+        }
+        return super.onTouchEvent(event);
+    }
 
 
 
@@ -24,6 +48,15 @@ public class Deporte5 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deporte5);
+        AtrasButton = (Button) findViewById(R.id.buttonStart);
+
+
+    }
+
+    public void onClickAtras(View view) {
+        startActivity(new Intent(getApplicationContext(), DeporteActivity.class));
+        countDownTimer.cancel();
+
 
 
     }

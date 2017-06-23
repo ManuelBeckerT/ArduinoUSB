@@ -20,14 +20,14 @@ public class FiltroActivity extends Activity {
     Button deporteButton, categoriaButton, cuerpoButton,atrasButton;
 
 
-    CountDownTimer countDownTimer = new CountDownTimer(4000, 1000) {
+    CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
 
         public void onTick(long millisUntilFinished) {
             //TODO: Do something every second
         }
 
         public void onFinish() {
-
+            countDownTimer.cancel();
             finish();
             startActivity(new Intent(getApplicationContext(), StartActivity.class));
 
@@ -93,21 +93,29 @@ public class FiltroActivity extends Activity {
 
     public void onClickDeporte(View view) {
         startActivity(new Intent(getApplicationContext(), DeporteActivity.class));
+        countDownTimer.cancel();
+
 
     }
 
     public void onClickCategoria(View view) {
         startActivity(new Intent(getApplicationContext(), CategoriaActivity.class));
+        countDownTimer.cancel();
+
 
     }
 
     public void onClickCuerpo(View view) {
         startActivity(new Intent(getApplicationContext(), Genero.class));
+        countDownTimer.cancel();
+
 
     }
 
     public void onClickAtras(View view) {
         startActivity(new Intent(getApplicationContext(), StartActivity.class));
+        countDownTimer.cancel();
+
     }
 
 

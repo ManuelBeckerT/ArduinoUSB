@@ -14,7 +14,6 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
@@ -25,17 +24,20 @@
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/device_filter" />
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+
             </intent-filter>
 
             <meta-data
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/device_filter" />
         </activity>
+
         <activity android:name=".FiltroActivity" />
         <activity
             android:name=".CategoriaActivity"
@@ -70,7 +72,7 @@
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/device_filter" />
         </activity>
-        <activity android:name=".Deportes.Deporte1" />
+        <activity android:name=".Deporte1" />
         <activity android:name=".Deporte2" />
         <activity android:name=".Deporte3" />
         <activity android:name=".Deporte4" />
@@ -79,10 +81,12 @@
         <activity android:name=".Calentamiento" />
         <activity android:name=".Agilidad" />
         <activity android:name=".Entrenamiento" />
-        <activity android:name=".Genero" />
+        <activity
+            android:name=".Genero"
+            android:label="@string/app_name">
+        </activity>
         <activity android:name=".Mujer" />
         <activity android:name=".Hombre" />
-        <activity android:name=".Deporte1"></activity>
     </application>
 
 </manifest>
