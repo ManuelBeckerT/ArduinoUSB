@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.os.CountDownTimer;
 import  android.view.InputEvent;
@@ -16,6 +17,7 @@ import android.view.MotionEvent;
 public class Deporte1 extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
     Button AtrasButton;
+    ImageView imageView;
 
     CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
 
@@ -49,6 +51,7 @@ public class Deporte1 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AtrasButton = (Button) findViewById(R.id.buttonStart);
+        imageView = (ImageView) findViewById(R.id.imageView);
         setContentView(R.layout.activity_deporte1);
 
 

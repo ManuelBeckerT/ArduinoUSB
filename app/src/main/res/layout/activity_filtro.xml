@@ -1,11 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hariharan.arduinousb.FiltroActivity">
+    tools:context="com.hariharan.arduinousb.FiltroActivity"
+    android:background="@drawable/filtrotitulo"
+    tools:layout_editor_absoluteY="89dp"
+    tools:layout_editor_absoluteX="0dp">
 
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Atras"
+        android:id="@+id/buttonAtras"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="onClickAtras"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintLeft_toLeftOf="@+id/buttonCuerpo" />
+
+
+    <!--
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Partes del Cuerpo"
+        android:id="@+id/buttonCuerpo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="onClickCuerpo"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="220dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Atras"
+        android:id="@+id/buttonAtras"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="onClickAtras"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
         android:layout_width="wrap_content"
@@ -18,9 +67,9 @@
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="139dp" />
+        <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Categoria"
@@ -37,39 +86,89 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Partes del Cuerpo"
-        android:id="@+id/buttonCuerpo"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="onClickCuerpo"
+
+
+    <ImageButton
+        android:id="@+id/buttonDeporte"
+        android:layout_width="844dp"
+        android:layout_height="308dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:srcCompat="@drawable/botton1"
+        android:onClick="onClickDeporte"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.942"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="247dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/buttonCategoria"
+        android:layout_width="844dp"
+        android:layout_height="308dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:srcCompat="@drawable/habilidades2"
+        android:onClick="onClickCategoria"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="499dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        -->
+    <ImageButton
+        android:id="@+id/buttonDeporte"
+        android:layout_width="0dp"
+        android:layout_height="264dp"
+        android:background="@null"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/botton1"
+        android:onClick="onClickDeporte"
+        tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCategoria"
+        app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="220dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <Button
+
+    <ImageButton
+        android:id="@+id/buttonCategoria"
+        android:background="@null"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Atras"
-        android:id="@+id/buttonAtras"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="onClickAtras"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/habilidades2"
+        android:onClick="onClickCategoria"
+        tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCuerpo"
+        app:layout_constraintRight_toRightOf="@+id/buttonDeporte"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="0dp" />
+        android:layout_marginBottom="7dp"
+        app:layout_constraintLeft_toLeftOf="@+id/buttonDeporte" />
 
-
-
-
-
-
+    <ImageButton
+        android:id="@+id/buttonCuerpo"
+        android:layout_width="0dp"
+        android:layout_height="285dp"
+        android:background="@null"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/cuerpo"
+        android:onClick="onClickCuerpo"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/buttonCategoria"
+        android:layout_marginTop="684dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/buttonCategoria"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -17,7 +18,8 @@ import android.view.MotionEvent;
 
 public class FiltroActivity extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
-    Button deporteButton, categoriaButton, cuerpoButton,atrasButton;
+    Button atrasButton;
+    ImageButton deporteButton, cuerpoButton, categoriaButton;
 
 
     CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
@@ -48,9 +50,9 @@ public class FiltroActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filtro);
-        deporteButton = (Button) findViewById(R.id.buttonDeporte);
-        categoriaButton = (Button) findViewById(R.id.buttonCategoria);
-        cuerpoButton = (Button) findViewById(R.id.buttonCuerpo);
+        deporteButton = (ImageButton) findViewById(R.id.buttonDeporte);
+        categoriaButton = (ImageButton) findViewById(R.id.buttonCategoria);
+        cuerpoButton = (ImageButton) findViewById(R.id.buttonCuerpo);
         atrasButton = (Button) findViewById(R.id.buttonAtras);
 
         setUiEnabled(true);

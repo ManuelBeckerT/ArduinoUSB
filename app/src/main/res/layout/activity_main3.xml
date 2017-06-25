@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hariharan.arduinousb.FiltroActivity"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
-
+    tools:context="com.hariharan.arduinousb.Main3Activity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -18,21 +15,5 @@
         app:srcCompat="@android:color/holo_blue_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
-        android:layout_marginBottom="3dp"
-        android:contentDescription="" />
-
-
-    <Button
-        android:id="@+id/ButtonAtras"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClickAtras"
-        android:text="Atras"
-        tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="31dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="18dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="31dp" />
+        android:layout_marginBottom="3dp" />
 </android.support.constraint.ConstraintLayout>

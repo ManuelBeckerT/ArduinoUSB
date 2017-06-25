@@ -16,10 +16,12 @@ import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.ImageView;
 import android.media.MediaPlayer;
 
 import com.felhr.usbserial.UsbSerialDevice;
@@ -37,6 +39,7 @@ public class StartActivity extends Activity {
     Button startButton;
     TextView textView;
     EditText editText;
+    //ImageView imagen;
     UsbManager usbManager;
     UsbDevice device;
     UsbSerialDevice serialPort;
@@ -48,7 +51,6 @@ public class StartActivity extends Activity {
 
     public void Start() {
         tvAppend(textView, "Conectando\n");
-        star_sonido();
         HashMap<String, UsbDevice> usbDevices = usbManager.getDeviceList();
         if (!usbDevices.isEmpty()) {
             boolean keep = true;
@@ -153,6 +155,7 @@ public class StartActivity extends Activity {
         startButton = (Button) findViewById(R.id.buttonStart);
         editText = (EditText) findViewById(R.id.editText);
         textView = (TextView) findViewById(R.id.textView);
+        //imagen = (ImageView) findViewById(R.id.imageView);
         setUiEnabled(true);
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_USB_PERMISSION);
@@ -219,11 +222,24 @@ public class StartActivity extends Activity {
 
 
     }
+
+
 */
+
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            //String string = "0";
+            //serialPort.write(string.getBytes());
+            //Stop();
+            startActivity(new Intent(getApplicationContext(), FiltroActivity.class));
+        }
+        return super.onTouchEvent(event);
+    }
+
     public void onClickStart(View view) {
-        String string = "0";
-        serialPort.write(string.getBytes());
-        Stop();
+        //String string = "0";
+        //serialPort.write(string.getBytes());
+        //Stop();
         startActivity(new Intent(getApplicationContext(), FiltroActivity.class));
     }
 
@@ -235,7 +251,7 @@ public class StartActivity extends Activity {
     }
 
     public void Star_sonido(){
-        String string = "1";
+        String string = "f1";
         serialPort.write(string.getBytes());
     }
 
