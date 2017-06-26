@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.os.CountDownTimer;
 import  android.view.InputEvent;
@@ -15,7 +16,8 @@ import android.view.MotionEvent;
 
 public class Genero extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
-    Button MujerButton, HombreButton, AtrasButton;
+    ImageButton MujerButton, HombreButton;
+    Button AtrasButton;
 
     CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
 
@@ -49,8 +51,8 @@ public class Genero extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_genero);
-        MujerButton = (Button) findViewById(R.id.buttonMujer);
-        HombreButton = (Button) findViewById(R.id.buttonHombre);
+        MujerButton = (ImageButton) findViewById(R.id.buttonMujer);
+        HombreButton = (ImageButton) findViewById(R.id.buttonHombre);
         AtrasButton = (Button) findViewById(R.id.buttonAtras);
         setUiEnabled(true);
 

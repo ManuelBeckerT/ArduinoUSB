@@ -26,8 +26,9 @@ import java.util.Map;
 
 public class Mujer extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
-    Button BrazosButton, AbdomenButton, PiernasButton, EspaldaButton, GluteoButton;
+    //Button BrazosButton, AbdomenButton, PiernasButton, EspaldaButton, GluteoButton;
     Button GirarButton, AtrasButton,clearButton;
+    Image
     TextView textView;
     UsbManager usbManager;
     UsbDevice device;

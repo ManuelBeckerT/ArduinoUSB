@@ -1,12 +1,18 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".StartActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".StartActivity"
+    android:background="@drawable/deportest">
 
 
-    <Button
+    <!--<Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tenis"
@@ -60,7 +66,70 @@
         android:layout_marginTop="28dp"
         android:layout_below="@+id/buttonD4"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />-->
+
+
+    <ImageButton
+        android:id="@+id/buttonD1"
+        android:background="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:onClick="onClickD1"
+        android:src="@drawable/tenis"
+        android:layout_below="@+id/buttonClear"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <ImageButton
+    android:id="@+id/buttonD2"
+    android:background="@null"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="29dp"
+    android:onClick="onClickD2"
+    android:src="@drawable/ciclismo"
+    android:layout_below="@+id/buttonD1"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:id="@+id/buttonD3"
+        android:background="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:onClick="onClickD3"
+        android:src="@drawable/futbol"
+        android:layout_below="@+id/buttonD2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:id="@+id/buttonD4"
+        android:background="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:onClick="onClickD4"
+        android:src="@drawable/ciclismo"
+        android:layout_below="@+id/buttonD3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:id="@+id/buttonD5"
+        android:background="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:onClick="onClickD5"
+        android:src="@drawable/rugby"
+        android:layout_below="@+id/buttonD4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,15 +140,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Clear"
-        android:id="@+id/buttonClear"
-        android:onClick="onClickClear"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+
 
     <Button
         android:layout_width="wrap_content"

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.felhr.usbserial.UsbSerialDevice;
@@ -26,7 +27,8 @@ import java.util.Map;
 
 public class DeporteActivity extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
-    Button D1Button, D2Button, D3Button, D4Button, D5Button, AtrasButton, clearButton;
+    ImageButton D1Button, D2Button, D3Button, D4Button, D5Button;
+    Button AtrasButton;
     TextView textView;
     UsbManager usbManager;
     UsbDevice device;
@@ -85,7 +87,7 @@ public class DeporteActivity extends Activity {
                     serialPort = UsbSerialDevice.createUsbSerialDevice(device, connection);
                     if (serialPort != null) {
                         if (serialPort.open()) { //Set Serial Connection Parameters.
-                            setUiEnabled(true);
+                            //setUiEnabled(true);
                             serialPort.setBaudRate(9600);
                             serialPort.setDataBits(UsbSerialInterface.DATA_BITS_8);
                             serialPort.setStopBits(UsbSerialInterface.STOP_BITS_1);
@@ -119,15 +121,14 @@ public class DeporteActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deporte);
         usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
-        D1Button = (Button) findViewById(R.id.buttonD1);
-        D2Button = (Button) findViewById(R.id.buttonD2);
-        D3Button = (Button) findViewById(R.id.buttonD3);
-        D4Button = (Button) findViewById(R.id.buttonD4);
-        D5Button = (Button) findViewById(R.id.buttonD5);
+        D1Button = (ImageButton) findViewById(R.id.buttonD1);
+        D2Button = (ImageButton) findViewById(R.id.buttonD2);
+        D3Button = (ImageButton) findViewById(R.id.buttonD3);
+        D4Button = (ImageButton) findViewById(R.id.buttonD4);
+        D5Button = (ImageButton) findViewById(R.id.buttonD5);
         AtrasButton = (Button) findViewById(R.id.buttonAtras);
-        clearButton = (Button) findViewById(R.id.buttonClear);
         textView = (TextView) findViewById(R.id.textView);
-        setUiEnabled(false);
+        //setUiEnabled(false);
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_USB_PERMISSION);
         filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED);
@@ -140,7 +141,7 @@ public class DeporteActivity extends Activity {
 
     }
 
-    public void setUiEnabled(boolean bool) {
+    /*public void setUiEnabled(boolean bool) {
         D1Button.setEnabled(bool);
         D2Button.setEnabled(bool);
         D3Button.setEnabled(bool);
@@ -148,7 +149,7 @@ public class DeporteActivity extends Activity {
         D5Button.setEnabled(bool);
         textView.setEnabled(bool);
 
-    }
+    }*/
 
     public void Start() {
         //tvAppend(textView,"Entro a start");
@@ -179,13 +180,29 @@ public class DeporteActivity extends Activity {
 
 
 
+    public void Botones_mostrar(){
+        D1Button.setVisibility(View.VISIBLE);
+        D2Button.setVisibility(View.VISIBLE);
+        D3Button.setVisibility(View.VISIBLE);
+        D4Button.setVisibility(View.VISIBLE);
+        D5Button.setVisibility(View.VISIBLE);
+    }
 
+    public void Botones_esconder(){
+        D1Button.setVisibility(View.GONE);
+        D2Button.setVisibility(View.GONE);
+        D3Button.setVisibility(View.GONE);
+        D4Button.setVisibility(View.GONE);
+        D5Button.setVisibility(View.GONE);
+    }
 
     public void onClickD1(View view) {
         String string = "q";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        countDownTimer.cancel();
+        Botones_esconder();
+
+        //countDownTimer.cancel();
         //startActivity(new Intent(getApplicationContext(), Deporte1.class));
 
     }
@@ -194,7 +211,8 @@ public class DeporteActivity extends Activity {
         String string = "w";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        countDownTimer.cancel();
+        Botones_esconder();
+        //countDownTimer.cancel();
         //startActivity(new Intent(getApplicationContext(), Deporte2.class));
 
     }
@@ -203,7 +221,8 @@ public class DeporteActivity extends Activity {
         String string = "e";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        countDownTimer.cancel();
+        Botones_esconder();
+        //countDownTimer.cancel();
         //startActivity(new Intent(getApplicationContext(), Deporte3.class));
 
     }
@@ -212,7 +231,8 @@ public class DeporteActivity extends Activity {
         String string = "r";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        countDownTimer.cancel();
+        Botones_esconder();
+        //countDownTimer.cancel();
        // startActivity(new Intent(getApplicationContext(), Deporte4.class));
 
     }
@@ -221,7 +241,8 @@ public class DeporteActivity extends Activity {
         String string = "t";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        countDownTimer.cancel();
+        Botones_esconder();
+        //countDownTimer.cancel();
         //startActivity(new Intent(getApplicationContext(), Deporte5.class));
     }
 
@@ -232,7 +253,7 @@ public class DeporteActivity extends Activity {
     }
 
     public void Stop() {
-        setUiEnabled(false);
+        //setUiEnabled(false);
         serialPort.close();
         tvAppend(textView,"\nSerial Connection Closed! \n");
 

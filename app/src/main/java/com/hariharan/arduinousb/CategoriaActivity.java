@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.felhr.usbserial.UsbSerialDevice;
@@ -26,7 +27,8 @@ import java.util.Map;
 
 public class CategoriaActivity extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
-    Button C1Button, C2Button, C3Button, C4Button, clearButton, AtrasButton;
+    ImageButton C1Button, C2Button, C3Button, C4Button;
+    Button clearButton, AtrasButton;
     TextView textView;
     UsbManager usbManager;
     UsbDevice device;
@@ -85,7 +87,7 @@ public class CategoriaActivity extends Activity {
                     serialPort = UsbSerialDevice.createUsbSerialDevice(device, connection);
                     if (serialPort != null) {
                         if (serialPort.open()) { //Set Serial Connection Parameters.
-                            setUiEnabled(true);
+                            //setUiEnabled(true);
                             serialPort.setBaudRate(9600);
                             serialPort.setDataBits(UsbSerialInterface.DATA_BITS_8);
                             serialPort.setStopBits(UsbSerialInterface.STOP_BITS_1);
@@ -119,14 +121,14 @@ public class CategoriaActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categoria);
         usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
-        C1Button = (Button) findViewById(R.id.buttonC1);
-        C2Button = (Button) findViewById(R.id.buttonC2);
-        C3Button = (Button) findViewById(R.id.buttonC3);
-        C4Button = (Button) findViewById(R.id.buttonC4);
+        C1Button = (ImageButton) findViewById(R.id.buttonC1);
+        C2Button = (ImageButton) findViewById(R.id.buttonC2);
+        C3Button = (ImageButton) findViewById(R.id.buttonC3);
+        C4Button = (ImageButton) findViewById(R.id.buttonC4);
         AtrasButton = (Button) findViewById(R.id.buttonAtras);
         clearButton = (Button) findViewById(R.id.buttonClear);
         textView = (TextView) findViewById(R.id.textView);
-        setUiEnabled(false);
+        //setUiEnabled(false);
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_USB_PERMISSION);
         filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED);
@@ -139,14 +141,14 @@ public class CategoriaActivity extends Activity {
 
     }
 
-    public void setUiEnabled(boolean bool) {
+    /*public void setUiEnabled(boolean bool) {
         C1Button.setEnabled(bool);
         C2Button.setEnabled(bool);
         C3Button.setEnabled(bool);
         C4Button.setEnabled(bool);
         textView.setEnabled(bool);
 
-    }
+    }*/
 
     public void Start() {
         //tvAppend(textView,"Entro a start");
@@ -218,7 +220,7 @@ public class CategoriaActivity extends Activity {
     }
 
     public void Stop() {
-        setUiEnabled(false);
+        //setUiEnabled(false);
         serialPort.close();
         tvAppend(textView,"\nSerial Connection Closed! \n");
 
