@@ -89,7 +89,8 @@
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Main3Activity" />
-        <activity android:name=".MujerAtras"></activity>
+        <activity android:name=".MujerAtras" />
+        <activity android:name=".HombreAtras"></activity>
     </application>
 
 </manifest>

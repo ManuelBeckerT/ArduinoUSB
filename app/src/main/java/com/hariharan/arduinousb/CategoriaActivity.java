@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.felhr.usbserial.UsbSerialDevice;
@@ -28,6 +29,7 @@ import java.util.Map;
 public class CategoriaActivity extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
     ImageButton C1Button, C2Button, C3Button, C4Button;
+    ImageView Observa;
     Button clearButton, AtrasButton;
     TextView textView;
     UsbManager usbManager;
@@ -127,6 +129,9 @@ public class CategoriaActivity extends Activity {
         C4Button = (ImageButton) findViewById(R.id.buttonC4);
         AtrasButton = (Button) findViewById(R.id.buttonAtras);
         clearButton = (Button) findViewById(R.id.buttonClear);
+        Observa = (ImageView) findViewById(R.id.Observa);
+        Observa.setVisibility(View.GONE);
+
         textView = (TextView) findViewById(R.id.textView);
         //setUiEnabled(false);
         IntentFilter filter = new IntentFilter();
@@ -177,12 +182,31 @@ public class CategoriaActivity extends Activity {
 
     }
 
+    public void Esconder(){
+        C1Button.setVisibility(View.GONE);
+        C2Button.setVisibility(View.GONE);
+        C3Button.setVisibility(View.GONE);
+        C4Button.setVisibility(View.GONE);
+
+    }
+
+    public void Mostrar(){
+        C1Button.setVisibility(View.VISIBLE);
+        C2Button.setVisibility(View.VISIBLE);
+        C3Button.setVisibility(View.VISIBLE);
+        C4Button.setVisibility(View.VISIBLE);
+
+    }
+
+
+
     public void onClickC1(View view) {
         String string = "a";
-        serialPort.write(string.getBytes());
-        tvAppend(textView, "\nData Sent : " + string + "\n");
-        countDownTimer.cancel();
-        startActivity(new Intent(getApplicationContext(), Fuerza.class));
+        Esconder();
+        Observa.setVisibility(View.VISIBLE);
+        //serialPort.write(string.getBytes());
+        //tvAppend(textView, "\nData Sent : " + string + "\n");
+        //countDownTimer.cancel();
 
     }
 
@@ -190,8 +214,9 @@ public class CategoriaActivity extends Activity {
         String string = "s";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        countDownTimer.cancel();
-        startActivity(new Intent(getApplicationContext(), Agilidad.class));
+        Esconder();
+        Observa.setVisibility(View.VISIBLE);
+
 
     }
 
@@ -199,8 +224,8 @@ public class CategoriaActivity extends Activity {
         String string = "d";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        countDownTimer.cancel();
-        startActivity(new Intent(getApplicationContext(), Calentamiento.class));
+        Esconder();
+        Observa.setVisibility(View.VISIBLE);
 
     }
 
@@ -208,8 +233,8 @@ public class CategoriaActivity extends Activity {
         String string = "f";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        countDownTimer.cancel();
-        startActivity(new Intent(getApplicationContext(), Entrenamiento.class));
+        Esconder();
+        Observa.setVisibility(View.VISIBLE);
 
     }
 

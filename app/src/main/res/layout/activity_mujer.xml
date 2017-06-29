@@ -11,7 +11,15 @@
     tools:context=".StartActivity"
     android:background="@drawable/mujerdelante">
 
-<!-- TODO: poner todo 22 pd mas abajo-->
+    <ImageView
+        android:id="@+id/Observa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/observa"
+        />
+
+
+    <!-- TODO: poner todo 22 pd mas abajo-->
     <ImageButton
         android:id="@+id/buttonBrazo1"
         android:layout_width="wrap_content"
@@ -64,6 +72,7 @@
         android:onClick="onClickAbdomen"
         android:src="@drawable/abdomen"
         android:layout_marginBottom="66dp"
+        android:layout_marginLeft="-13dp"
         android:layout_alignBottom="@+id/buttonBrazo1"
         android:layout_toRightOf="@+id/buttonBrazo1"
         android:layout_toEndOf="@+id/buttonBrazo1" />

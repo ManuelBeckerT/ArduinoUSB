@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.felhr.usbserial.UsbSerialDevice;
@@ -32,9 +33,12 @@ public class MujerAtras extends Activity {
     TextView textView;
     UsbManager usbManager;
     UsbDevice device;
+    ImageView Observa;
     UsbSerialDevice serialPort;
     UsbDeviceConnection connection;
     boolean etapa= true;
+
+    CountDownTimer countDownTimer2;
 
     CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
 
@@ -125,6 +129,8 @@ public class MujerAtras extends Activity {
         GluteosButton = (ImageButton) findViewById(R.id.buttonGluteo);
         Transapernte();
         GirarButton = (ImageButton) findViewById(R.id.buttonGirar);
+        Observa = (ImageView) findViewById(R.id.Observa);
+        Observa.setVisibility(View.GONE);
 
 
         AtrasButton = (Button) findViewById(R.id.buttonAtras);
@@ -146,6 +152,13 @@ public class MujerAtras extends Activity {
     public void Transapernte(){
         EspaldaButton.setAlpha(0f);
         GluteosButton.setAlpha(0f);
+    }
+
+    public void Botones_esconder(){
+        EspaldaButton.setVisibility(View.GONE);
+        GluteosButton.setVisibility(View.GONE);
+        GirarButton.setVisibility(View.GONE);
+
     }
 
 
@@ -186,6 +199,24 @@ public class MujerAtras extends Activity {
         //String string = "v";
         //serialPort.write(string.getBytes());
         //tvAppend(textView, "\nData Sent : " + string + "\n");
+        //TODO: poner un contador
+
+        countDownTimer2=  new CountDownTimer(1000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                //TODO: Do something every second
+            }
+
+            public void onFinish() {
+
+                finish();
+                countDownTimer.cancel();
+                Botones_esconder();
+                Observa.setVisibility(View.VISIBLE);
+
+
+            }
+        };
 
     }
     public void onClickGluteo(View view) {
@@ -194,6 +225,9 @@ public class MujerAtras extends Activity {
         //String string = "b";
         //serialPort.write(string.getBytes());
         //tvAppend(textView, "\nData Sent : " + string + "\n");
+        //TODO: poner un contador
+        Botones_esconder();
+        Observa.setVisibility(View.VISIBLE);
     }
 
     public void onClickGirar(View view) {

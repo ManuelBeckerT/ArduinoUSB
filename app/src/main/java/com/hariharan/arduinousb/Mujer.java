@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.felhr.usbserial.UsbSerialDevice;
@@ -32,6 +33,7 @@ public class Mujer extends Activity {
     TextView textView;
     UsbManager usbManager;
     UsbDevice device;
+    ImageView Observa;
     UsbSerialDevice serialPort;
     UsbDeviceConnection connection;
     boolean posicion= true;
@@ -129,6 +131,9 @@ public class Mujer extends Activity {
         AbdomenButton = (ImageButton) findViewById(R.id.buttonAbdomen);
         Transapernte();
         GirarButton = (ImageButton) findViewById(R.id.buttonGirar);
+        Observa = (ImageView) findViewById(R.id.Observa);
+        Observa.setVisibility(View.GONE);
+
 
 
         AtrasButton = (Button) findViewById(R.id.buttonAtras);
@@ -146,6 +151,17 @@ public class Mujer extends Activity {
 
 
     }
+
+    public void Botones_esconder(){
+        Brazo1Button.setVisibility(View.GONE);
+        Brazo2Button.setVisibility(View.GONE);
+        Pierna1Button.setVisibility(View.GONE);
+        Pierna2Button.setVisibility(View.GONE);
+        AbdomenButton.setVisibility(View.GONE);
+        GirarButton.setVisibility(View.GONE);
+
+    }
+
 
     public void Transapernte(){
         Brazo1Button.setAlpha(0f);
@@ -189,30 +205,42 @@ public class Mujer extends Activity {
         tvAppend(textView, "Brazo"); //TODO: arreglar esto
         Brazo1Button.setAlpha(1f);
         Brazo2Button.setAlpha(1f);
-
+        countDownTimer.cancel();
+        countDownTimer.start();
         //String string = "z";
         //serialPort.write(string.getBytes());
         //tvAppend(textView, "\nData Sent : " + string + "\n");
+        //TODO: poner un contador
+        Botones_esconder();
+        Observa.setVisibility(View.VISIBLE);
 
     }
 
     public void onClickAbdomen(View view) {
         etapa=false;
         AbdomenButton.setAlpha(1f);
+        countDownTimer.cancel();
+        countDownTimer.start();
 
         //String string = "x";
         //serialPort.write(string.getBytes());
         //tvAppend(textView, "\nData Sent : " + string + "\n");
+        Botones_esconder();
+        Observa.setVisibility(View.VISIBLE);
 
     }
     public void onClickPiernas(View view) {
         etapa=false;
         Pierna1Button.setAlpha(1f);
         Pierna2Button.setAlpha(1f);
+        countDownTimer.cancel();
+        countDownTimer.start();
 
         //String string = "c";
         //serialPort.write(string.getBytes());
         //tvAppend(textView, "\nData Sent : " + string + "\n");
+        Botones_esconder();
+        Observa.setVisibility(View.VISIBLE);
 
     }
 

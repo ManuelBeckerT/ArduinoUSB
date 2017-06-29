@@ -189,6 +189,8 @@ public class Hombre extends Activity {
         tvAppend(textView, "Brazo"); //TODO: arreglar esto
         Brazo1Button.setAlpha(1f);
         Brazo2Button.setAlpha(1f);
+        countDownTimer.cancel();
+        countDownTimer.start();
 
         //String string = "z";
         //serialPort.write(string.getBytes());
@@ -199,6 +201,8 @@ public class Hombre extends Activity {
     public void onClickAbdomen(View view) {
         etapa=false;
         AbdomenButton.setAlpha(1f);
+        countDownTimer.cancel();
+        countDownTimer.start();
 
         //String string = "x";
         //serialPort.write(string.getBytes());
@@ -209,6 +213,8 @@ public class Hombre extends Activity {
         etapa=false;
         Pierna1Button.setAlpha(1f);
         Pierna2Button.setAlpha(1f);
+        countDownTimer.cancel();
+        countDownTimer.start();
 
         //String string = "c";
         //serialPort.write(string.getBytes());
@@ -218,7 +224,7 @@ public class Hombre extends Activity {
 
     public void onClickGirar(View view) {
         countDownTimer.cancel();
-        startActivity(new Intent(getApplicationContext(), MujerAtras.class));
+        startActivity(new Intent(getApplicationContext(), HombreAtras.class));
         // TODO: pasar a la actividad de espalda
     }
 

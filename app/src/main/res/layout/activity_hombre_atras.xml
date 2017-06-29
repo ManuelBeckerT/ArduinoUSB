@@ -9,31 +9,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MujerAtras"
-    android:background="@drawable/mujeratras">
-
+    android:background="@drawable/hombreatras">
 
     <!-- TODO: poner todo 22 pd mas abajo-->
     <ImageButton
         android:id="@+id/buttonEspalda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/espalda"
+        android:src="@drawable/hespalda"
         android:onClick="onClickEspalda"
         android:background="@null"
-        android:layout_marginTop="177dp"
+        android:layout_marginTop="141dp"
         android:layout_below="@+id/buttonAtras"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/buttonGluteo"
+        android:layout_alignEnd="@+id/buttonGluteo" />
 
     <!-- FIXME: android:layout_marginTop="154dp 177"-->
 
 
-    <ImageView
-        android:id="@+id/Observa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/observa"
-
-        />
 
 
     <ImageButton
@@ -42,10 +35,9 @@
         android:layout_height="wrap_content"
         android:background="@null"
         android:onClick="onClickGluteo"
-        android:src="@drawable/gluteos"
-        android:layout_alignTop="@+id/buttonEspalda"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="167dp" />
+        android:src="@drawable/hgluteos"
+        android:layout_below="@+id/buttonEspalda"
+        android:layout_centerHorizontal="true" />
 
     <!-- FIXME: android:layout_marginTop="155dp 159"-->
 

@@ -36,7 +36,6 @@ import java.util.Random;
 
 public class StartActivity extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
-    Button startButton;
     TextView textView;
     EditText editText;
     //ImageView imagen;
@@ -152,7 +151,6 @@ public class StartActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
-        startButton = (Button) findViewById(R.id.buttonStart);
         editText = (EditText) findViewById(R.id.editText);
         textView = (TextView) findViewById(R.id.textView);
         //imagen = (ImageView) findViewById(R.id.imageView);
@@ -187,7 +185,6 @@ public class StartActivity extends Activity {
     }
 
     public void setUiEnabled(boolean bool) {
-        startButton.setEnabled(bool);
         textView.setEnabled(bool);
 
     }
