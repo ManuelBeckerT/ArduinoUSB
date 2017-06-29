@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.felhr.usbserial.UsbSerialDevice;
@@ -26,14 +27,15 @@ import java.util.Map;
 
 public class Hombre extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
-    Button BrazosButton, AbdomenButton, PiernasButton, EspaldaButton, GluteoButton;
-    Button GirarButton, AtrasButton,clearButton;
+    Button  AtrasButton,clearButton;
+    ImageButton Brazo1Button, Brazo2Button, Pierna1Button, Pierna2Button, AbdomenButton, GirarButton;
     TextView textView;
     UsbManager usbManager;
     UsbDevice device;
     UsbSerialDevice serialPort;
     UsbDeviceConnection connection;
     boolean posicion= true;
+    boolean etapa= true;
 
     CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
 
@@ -87,7 +89,6 @@ public class Hombre extends Activity {
                     serialPort = UsbSerialDevice.createUsbSerialDevice(device, connection);
                     if (serialPort != null) {
                         if (serialPort.open()) { //Set Serial Connection Parameters.
-                            setUiEnabled(true);
                             serialPort.setBaudRate(9600);
                             serialPort.setDataBits(UsbSerialInterface.DATA_BITS_8);
                             serialPort.setStopBits(UsbSerialInterface.STOP_BITS_1);
@@ -121,16 +122,18 @@ public class Hombre extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hombre);
         usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
-        BrazosButton = (Button) findViewById(R.id.buttonBrazos);
-        AbdomenButton = (Button) findViewById(R.id.buttonAbdomen);
-        PiernasButton = (Button) findViewById(R.id.buttonPiernas);
-        EspaldaButton = (Button) findViewById(R.id.buttonEspalda);
-        GluteoButton = (Button) findViewById(R.id.buttonGluteo);
-        GirarButton = (Button) findViewById(R.id.buttonGirar);
+        Brazo1Button = (ImageButton) findViewById(R.id.buttonBrazo1);
+        Brazo2Button = (ImageButton) findViewById(R.id.buttonBrazo2);
+        Pierna1Button = (ImageButton) findViewById(R.id.buttonPierna1);
+        Pierna2Button = (ImageButton) findViewById(R.id.buttonPierna2);
+        AbdomenButton = (ImageButton) findViewById(R.id.buttonAbdomen);
+        Transapernte();
+        GirarButton = (ImageButton) findViewById(R.id.buttonGirar);
+
+
         AtrasButton = (Button) findViewById(R.id.buttonAtras);
         clearButton = (Button) findViewById(R.id.buttonClear);
         textView = (TextView) findViewById(R.id.textView);
-        setUiEnabled(false); //TODO: CAMBIAR A FALSE
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_USB_PERMISSION);
         filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED);
@@ -138,41 +141,21 @@ public class Hombre extends Activity {
         registerReceiver(broadcastReceiver, filter);
         //tvAppend(textView,"Antes de Start");
         Start();
-        Adelante();
 
         // tvAppend(textView,"Despues de Start");
 
 
     }
 
-
-    public void Adelante() {
-        BrazosButton.setVisibility(View.VISIBLE);
-        AbdomenButton.setVisibility(View.VISIBLE);
-        PiernasButton.setVisibility(View.VISIBLE);
-        EspaldaButton.setVisibility(View.GONE);
-        GluteoButton.setVisibility(View.GONE);
+    public void Transapernte(){
+        Brazo1Button.setAlpha(0f);
+        Brazo2Button.setAlpha(0f);
+        Pierna1Button.setAlpha(0f);
+        Pierna2Button.setAlpha(0f);
+        AbdomenButton.setAlpha(0f);
     }
 
 
-    public void Atras(){
-        BrazosButton.setVisibility(View.GONE);
-        AbdomenButton.setVisibility(View.GONE);
-        PiernasButton.setVisibility(View.GONE   );
-        EspaldaButton.setVisibility(View.VISIBLE);
-        GluteoButton.setVisibility(View.VISIBLE);
-
-    }
-
-    public void setUiEnabled(boolean bool) {
-        BrazosButton.setEnabled(bool);
-        AbdomenButton.setEnabled(bool);
-        PiernasButton.setEnabled(bool);
-        EspaldaButton.setEnabled(bool);
-        GluteoButton.setEnabled(bool);
-        textView.setEnabled(bool);
-
-    }
 
     public void Start() {
         //tvAppend(textView,"Entro a start");
@@ -202,55 +185,57 @@ public class Hombre extends Activity {
     }
 
     public void onClickBrazos(View view) {
-        String string = "z";
-        serialPort.write(string.getBytes());
-        tvAppend(textView, "\nData Sent : " + string + "\n");
+        etapa=false;
+        tvAppend(textView, "Brazo"); //TODO: arreglar esto
+        Brazo1Button.setAlpha(1f);
+        Brazo2Button.setAlpha(1f);
+
+        //String string = "z";
+        //serialPort.write(string.getBytes());
+        //tvAppend(textView, "\nData Sent : " + string + "\n");
 
     }
 
     public void onClickAbdomen(View view) {
-        String string = "x";
-        serialPort.write(string.getBytes());
-        tvAppend(textView, "\nData Sent : " + string + "\n");
+        etapa=false;
+        AbdomenButton.setAlpha(1f);
+
+        //String string = "x";
+        //serialPort.write(string.getBytes());
+        //tvAppend(textView, "\nData Sent : " + string + "\n");
 
     }
     public void onClickPiernas(View view) {
-        String string = "c";
-        serialPort.write(string.getBytes());
-        tvAppend(textView, "\nData Sent : " + string + "\n");
+        etapa=false;
+        Pierna1Button.setAlpha(1f);
+        Pierna2Button.setAlpha(1f);
 
-    }
-    public void onClickEspalda(View view) {
-        String string = "v";
-        serialPort.write(string.getBytes());
-        tvAppend(textView, "\nData Sent : " + string + "\n");
+        //String string = "c";
+        //serialPort.write(string.getBytes());
+        //tvAppend(textView, "\nData Sent : " + string + "\n");
 
-    }
-    public void onClickGluteo(View view) {
-        String string = "b";
-        serialPort.write(string.getBytes());
-        tvAppend(textView, "\nData Sent : " + string + "\n");
     }
 
     public void onClickGirar(View view) {
-        if (posicion){
-            Atras();
-            posicion= false;
+        countDownTimer.cancel();
+        startActivity(new Intent(getApplicationContext(), MujerAtras.class));
+        // TODO: pasar a la actividad de espalda
+    }
+
+
+    public void onClickAtras(View view) {
+        if (etapa){
+            countDownTimer.cancel();
+            startActivity(new Intent(getApplicationContext(), Genero.class));
         }
         else {
-            Adelante();
-            posicion=true;
+            etapa=true;
+            Transapernte();
         }
-
-    }
-    public void onClickAtras(View view) {
-        countDownTimer.cancel();
-        startActivity(new Intent(getApplicationContext(), Genero.class));
 
     }
 
     public void Stop() {
-        setUiEnabled(false);
         serialPort.close();
         tvAppend(textView,"\nSerial Connection Closed! \n");
 

@@ -25,16 +25,15 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Mujer extends Activity {
+public class MujerAtras extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
     Button  AtrasButton,clearButton;
-    ImageButton Brazo1Button, Brazo2Button, Pierna1Button, Pierna2Button, AbdomenButton, GirarButton;
+    ImageButton EspaldaButton, GluteosButton, GirarButton;
     TextView textView;
     UsbManager usbManager;
     UsbDevice device;
     UsbSerialDevice serialPort;
     UsbDeviceConnection connection;
-    boolean posicion= true;
     boolean etapa= true;
 
     CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
@@ -120,13 +119,10 @@ public class Mujer extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mujer);
+        setContentView(R.layout.activity_mujer_atras);
         usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
-        Brazo1Button = (ImageButton) findViewById(R.id.buttonBrazo1);
-        Brazo2Button = (ImageButton) findViewById(R.id.buttonBrazo2);
-        Pierna1Button = (ImageButton) findViewById(R.id.buttonPierna1);
-        Pierna2Button = (ImageButton) findViewById(R.id.buttonPierna2);
-        AbdomenButton = (ImageButton) findViewById(R.id.buttonAbdomen);
+        EspaldaButton = (ImageButton) findViewById(R.id.buttonEspalda);
+        GluteosButton = (ImageButton) findViewById(R.id.buttonGluteo);
         Transapernte();
         GirarButton = (ImageButton) findViewById(R.id.buttonGirar);
 
@@ -148,11 +144,8 @@ public class Mujer extends Activity {
     }
 
     public void Transapernte(){
-        Brazo1Button.setAlpha(0f);
-        Brazo2Button.setAlpha(0f);
-        Pierna1Button.setAlpha(0f);
-        Pierna2Button.setAlpha(0f);
-        AbdomenButton.setAlpha(0f);
+        EspaldaButton.setAlpha(0f);
+        GluteosButton.setAlpha(0f);
     }
 
 
@@ -184,41 +177,28 @@ public class Mujer extends Activity {
 
     }
 
-    public void onClickBrazos(View view) {
-        etapa=false;
-        tvAppend(textView, "Brazo"); //TODO: arreglar esto
-        Brazo1Button.setAlpha(1f);
-        Brazo2Button.setAlpha(1f);
 
-        //String string = "z";
+
+
+    public void onClickEspalda(View view) {
+        etapa=false;
+        EspaldaButton.setAlpha(1f);
+        //String string = "v";
         //serialPort.write(string.getBytes());
         //tvAppend(textView, "\nData Sent : " + string + "\n");
 
     }
-
-    public void onClickAbdomen(View view) {
+    public void onClickGluteo(View view) {
         etapa=false;
-        AbdomenButton.setAlpha(1f);
-
-        //String string = "x";
+        GluteosButton.setAlpha(1f);
+        //String string = "b";
         //serialPort.write(string.getBytes());
         //tvAppend(textView, "\nData Sent : " + string + "\n");
-
-    }
-    public void onClickPiernas(View view) {
-        etapa=false;
-        Pierna1Button.setAlpha(1f);
-        Pierna2Button.setAlpha(1f);
-
-        //String string = "c";
-        //serialPort.write(string.getBytes());
-        //tvAppend(textView, "\nData Sent : " + string + "\n");
-
     }
 
     public void onClickGirar(View view) {
         countDownTimer.cancel();
-        startActivity(new Intent(getApplicationContext(), MujerAtras.class));
+        startActivity(new Intent(getApplicationContext(), Mujer.class));
         // TODO: pasar a la actividad de espalda
     }
 

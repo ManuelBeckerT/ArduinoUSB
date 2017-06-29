@@ -150,8 +150,9 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonCuerpo"
         app:layout_constraintRight_toRightOf="@+id/buttonDeporte"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="7dp"
-        app:layout_constraintLeft_toLeftOf="@+id/buttonDeporte" />
+        android:layout_marginBottom="14dp"
+        app:layout_constraintLeft_toLeftOf="@+id/buttonDeporte"
+        app:layout_constraintHorizontal_bias="0.514" />
 
     <ImageButton
         android:id="@+id/buttonCuerpo"

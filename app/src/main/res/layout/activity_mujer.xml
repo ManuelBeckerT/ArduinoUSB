@@ -11,97 +11,95 @@
     tools:context=".StartActivity"
     android:background="@drawable/mujerdelante">
 
-
+<!-- TODO: poner todo 22 pd mas abajo-->
     <ImageButton
-        android:id="@+id/buttonbrazo1"
+        android:id="@+id/buttonBrazo1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/brazo1"
         android:onClick="onClickBrazos"
         android:background="@null"
-        android:alpha="0"
-        android:layout_marginRight="249dp"
-        android:layout_marginEnd="255dp"
-        android:layout_marginTop="328dp"
+        android:layout_marginLeft="77dp"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="173dp"
         android:layout_below="@+id/buttonAtras"
-        android:layout_toLeftOf="@+id/buttonGirar"
-        android:layout_toStartOf="@+id/buttonGirar" />
+        android:layout_alignLeft="@+id/buttonGirar"
+        android:layout_alignStart="@+id/buttonGirar" />
 
-<!--
-    <Button
+    <!-- FIXME: android:layout_marginTop="299dp 321"-->
+
+    <ImageButton
+        android:id="@+id/buttonBrazo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Brazos"
-        android:id="@+id/buttonBrazos"
+        android:background="@null"
         android:onClick="onClickBrazos"
-        android:layout_marginTop="24dp"
-        android:layout_alignParentTop="true"
-        android:layout_below="@+id/buttonStop"
-        android:layout_alignLeft="@+id/buttonStop"
-        android:layout_alignStart="@+id/buttonStop" />
+        android:src="@drawable/brazo2"
+        android:layout_marginLeft="105dp"
+        android:layout_marginStart="105dp"
+        android:layout_alignTop="@+id/buttonBrazo1"
+        android:layout_toRightOf="@+id/buttonBrazo1"
+        android:layout_toEndOf="@+id/buttonBrazo1" />
 
-    <Button
+    <ImageButton
+        android:id="@+id/buttonPierna1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Abdomen"
-        android:id="@+id/buttonAbdomen"
-        android:onClick="onClickAbdomen"
-        android:layout_below="@+id/buttonBrazos"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Piernas"
-        android:id="@+id/buttonPiernas"
+        android:background="@null"
         android:onClick="onClickPiernas"
-        android:layout_below="@+id/buttonAbdomen"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp" />
+        android:src="@drawable/pierna1"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_below="@+id/buttonBrazo2"
+        android:layout_alignLeft="@+id/buttonBrazo1"
+        android:layout_alignStart="@+id/buttonBrazo1" />
 
-    <Button
+    <!-- FIXME: android:layout_marginTop="103" 321"-->
+
+    <ImageButton
+        android:id="@+id/buttonAbdomen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Espalda"
-        android:id="@+id/buttonEspalda"
-        android:onClick="onClickEspalda"
-        android:layout_alignBaseline="@+id/buttonBrazos"
-        android:layout_alignBottom="@+id/buttonBrazos"
-        android:layout_alignLeft="@+id/buttonGluteo"
-        android:layout_alignStart="@+id/buttonGluteo" />
+        android:background="@null"
+        android:onClick="onClickAbdomen"
+        android:src="@drawable/abdomen"
+        android:layout_marginBottom="66dp"
+        android:layout_alignBottom="@+id/buttonBrazo1"
+        android:layout_toRightOf="@+id/buttonBrazo1"
+        android:layout_toEndOf="@+id/buttonBrazo1" />
 
-    <Button
+    <ImageButton
+        android:id="@+id/buttonPierna2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gluteo"
-        android:id="@+id/buttonGluteo"
-        android:onClick="onClickGluteo"
-        android:layout_below="@+id/buttonEspalda"
-        android:layout_alignBaseline="@+id/buttonAbdomen"
-        android:layout_alignBottom="@+id/buttonAbdomen"
-        android:layout_alignRight="@+id/buttonAbdomen"
-        android:layout_alignEnd="@+id/buttonAbdomen" /> -->
+        android:background="@null"
+        android:onClick="onClickPiernas"
+        android:src="@drawable/pierna2"
+        android:layout_below="@+id/buttonBrazo2"
+        android:layout_toRightOf="@+id/buttonPierna1"
+        android:layout_toEndOf="@+id/buttonPierna1" />
 
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Girar"
+    <ImageButton
         android:id="@+id/buttonGirar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
         android:onClick="onClickGirar"
-        android:layout_marginRight="21dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="23dp"
-        android:layout_above="@+id/textView"
-        android:layout_toLeftOf="@+id/buttonAtras"
-        android:layout_toStartOf="@+id/buttonAtras" />
+        android:src="@drawable/flecha"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Atras"
+        android:id="@+id/buttonAtras"
+        android:onClick="onClickAtras"
+        android:layout_marginTop="100dp"
+        android:layout_below="@+id/buttonPiernas"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -112,13 +110,5 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Atras"
-        android:id="@+id/buttonAtras"
-        android:onClick="onClickAtras"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
