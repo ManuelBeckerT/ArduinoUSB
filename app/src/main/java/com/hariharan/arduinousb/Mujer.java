@@ -40,7 +40,7 @@ public class Mujer extends Activity {
     boolean posicion= true;
     boolean etapa= true;
 
-    CountDownTimer countDownTimer = new CountDownTimer(15000, 1000) {
+    CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
 
         public void onTick(long millisUntilFinished) {
             //TODO: Do something every second
@@ -161,6 +161,7 @@ public class Mujer extends Activity {
         AbdomenButton.setVisibility(View.GONE);
         GirarButton.setVisibility(View.GONE);
         MostrarButton.setVisibility(View.GONE);
+        AtrasButton.setVisibility(View.GONE);
 
     }
 
@@ -266,6 +267,7 @@ public class Mujer extends Activity {
     public void onClickAtras(View view) {
         if (etapa){
             countDownTimer.cancel();
+            Stop();
             startActivity(new Intent(getApplicationContext(), Genero.class));
         }
         else {

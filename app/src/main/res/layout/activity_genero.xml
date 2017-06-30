@@ -28,8 +28,7 @@
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintTop_toTopOf="@+id/buttonHombre"
         app:layout_constraintLeft_toRightOf="@+id/buttonAtras"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="-68dp" />
+        android:layout_marginLeft="69dp" />
 
     <ImageButton
         android:id="@+id/buttonHombre"
@@ -46,7 +45,7 @@
         android:layout_marginEnd="100dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="158dp"
-        android:layout_marginRight="114dp" />
+        android:layout_marginRight="100dp" />
 
 
 
@@ -84,17 +83,22 @@
         -->
 
     <Button
+        android:id="@+id/buttonAtras"
+        style="@android:style/Widget.DeviceDefault.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Atras"
-        android:id="@+id/buttonAtras"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:backgroundTint="#29ABE2"
         android:onClick="onClickAtras"
+        android:text="Atras"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#4E4F4F"
         tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="70dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginBottom="37dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp" />
 
 </android.support.constraint.ConstraintLayout>

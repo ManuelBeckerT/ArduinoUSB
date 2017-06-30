@@ -109,6 +109,8 @@ public class StartActivity extends Activity {
                     if (tiempo_sonido){
                         star_sonido();
                         tiempo_sonido=false;
+                        countDownTimer.cancel();
+                        countDownTimer.start();
                     }
 
 
@@ -184,7 +186,7 @@ public class StartActivity extends Activity {
         filter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED);
         registerReceiver(broadcastReceiver, filter);
         sonido1 = MediaPlayer.create(this, R.raw.audio_dilab);
-        sonido2 = MediaPlayer.create(this, R.raw.auido_2);
+        sonido2 = MediaPlayer.create(this, R.raw.audio_2);
         sonido3 = MediaPlayer.create(this, R.raw.audio_3);
         tiempo_sonido= true;
         Start();
@@ -196,6 +198,8 @@ public class StartActivity extends Activity {
     public void star_sonido(){
         Random r = new Random();
         int i = r.nextInt(3);
+        String strI = Integer.toString(i);
+        //tvAppend(textView, strI);
         if (i==1) {
             sonido1.start();
         }
@@ -248,9 +252,8 @@ public class StartActivity extends Activity {
 
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            String string = "0";
-            serialPort.write(string.getBytes());
-            tvAppend(textView,"Mando 0 \n");
+            //String string = "0";
+            //serialPort.write(string.getBytes());
             Stop();
             startActivity(new Intent(getApplicationContext(), FiltroActivity.class));
         }

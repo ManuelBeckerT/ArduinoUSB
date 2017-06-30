@@ -256,6 +256,7 @@ public class DeporteActivity extends Activity {
     }
 
     public void onClickAtras(View view) {
+        Stop();
         countDownTimer.cancel();
         startActivity(new Intent(getApplicationContext(), FiltroActivity.class));
 

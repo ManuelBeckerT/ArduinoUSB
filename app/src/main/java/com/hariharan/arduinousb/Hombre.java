@@ -162,6 +162,7 @@ public class Hombre extends Activity {
         AbdomenButton.setVisibility(View.GONE);
         GirarButton.setVisibility(View.GONE);
         MostrarButton.setVisibility(View.GONE);
+        AtrasButton.setVisibility(View.GONE);
 
     }
 

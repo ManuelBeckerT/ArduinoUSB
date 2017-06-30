@@ -237,6 +237,7 @@ public class CategoriaActivity extends Activity {
     }
 
     public void onClickAtras(View view){
+        Stop();
         countDownTimer.cancel();
         startActivity(new Intent(getApplicationContext(), FiltroActivity.class));
 
@@ -254,8 +255,8 @@ public class CategoriaActivity extends Activity {
     }
 
     private void tvAppend(TextView tv, CharSequence text) {
-        final TextView ftv = tv;
-        /*final CharSequence ftext = text;
+       /* final TextView ftv = tv;
+        final CharSequence ftext = text;
 
         runOnUiThread(new Runnable() {
             @Override

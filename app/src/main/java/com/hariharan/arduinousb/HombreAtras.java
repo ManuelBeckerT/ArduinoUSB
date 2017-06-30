@@ -161,6 +161,7 @@ public class HombreAtras extends Activity {
         GluteosButton.setVisibility(View.GONE);
         GirarButton.setVisibility(View.GONE);
         MostrarButton.setVisibility(View.GONE);
+        AtrasButton.setVisibility(View.GONE);
 
     }
 
@@ -231,6 +232,7 @@ public class HombreAtras extends Activity {
     public void onClickAtras(View view) {
         if (etapa){
             countDownTimer.cancel();
+            Stop();
             startActivity(new Intent(getApplicationContext(), Genero.class));
         }
         else {
