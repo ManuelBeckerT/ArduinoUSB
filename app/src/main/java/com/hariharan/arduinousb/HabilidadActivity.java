@@ -26,20 +26,16 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MujerAtras extends Activity {
+public class HabilidadActivity extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
-    Button  AtrasButton,clearButton, MostrarButton;
-    ImageButton EspaldaButton, GluteosButton, GirarButton;
+    ImageButton D1Button, D2Button, D3Button, D4Button, D5Button;
+    Button AtrasButton;
     TextView textView;
+    ImageView Observa;
     UsbManager usbManager;
     UsbDevice device;
-    ImageView Observa;
     UsbSerialDevice serialPort;
     UsbDeviceConnection connection;
-    String string;
-    boolean etapa= true;
-
-    CountDownTimer countDownTimer2;
 
     CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
 
@@ -93,6 +89,7 @@ public class MujerAtras extends Activity {
                     serialPort = UsbSerialDevice.createUsbSerialDevice(device, connection);
                     if (serialPort != null) {
                         if (serialPort.open()) { //Set Serial Connection Parameters.
+                            //setUiEnabled(true);
                             serialPort.setBaudRate(9600);
                             serialPort.setDataBits(UsbSerialInterface.DATA_BITS_8);
                             serialPort.setStopBits(UsbSerialInterface.STOP_BITS_1);
@@ -124,20 +121,19 @@ public class MujerAtras extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mujer_atras);
+        setContentView(R.layout.activity_categoria);
         usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
-        EspaldaButton = (ImageButton) findViewById(R.id.buttonEspalda);
-        GluteosButton = (ImageButton) findViewById(R.id.buttonGluteo);
-        Transapernte();
-        GirarButton = (ImageButton) findViewById(R.id.buttonGirar);
+        D1Button = (ImageButton) findViewById(R.id.buttonD1);
+        D2Button = (ImageButton) findViewById(R.id.buttonD2);
+        D3Button = (ImageButton) findViewById(R.id.buttonD3);
+        D4Button = (ImageButton) findViewById(R.id.buttonD4);
+        D5Button = (ImageButton) findViewById(R.id.buttonD5);
+        AtrasButton = (Button) findViewById(R.id.buttonAtras);
         Observa = (ImageView) findViewById(R.id.Observa);
         Observa.setVisibility(View.GONE);
 
-        MostrarButton = (Button) findViewById(R.id.buttonMostrar);
-        MostrarButton.setEnabled(false);
-        AtrasButton = (Button) findViewById(R.id.buttonAtras);
-        clearButton = (Button) findViewById(R.id.buttonClear);
         textView = (TextView) findViewById(R.id.textView);
+        //setUiEnabled(false);
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_USB_PERMISSION);
         filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED);
@@ -145,26 +141,20 @@ public class MujerAtras extends Activity {
         registerReceiver(broadcastReceiver, filter);
         //tvAppend(textView,"Antes de Start");
         Start();
-
         // tvAppend(textView,"Despues de Start");
 
 
     }
 
-    public void Transapernte(){
-        EspaldaButton.setAlpha(0f);
-        GluteosButton.setAlpha(0f);
-    }
+    /*public void setUiEnabled(boolean bool) {
+        D1Button.setEnabled(bool);
+        D2Button.setEnabled(bool);
+        D3Button.setEnabled(bool);
+        D4Button.setEnabled(bool);
+        D5Button.setEnabled(bool);
+        textView.setEnabled(bool);
 
-    public void Botones_esconder(){
-        EspaldaButton.setVisibility(View.GONE);
-        GluteosButton.setVisibility(View.GONE);
-        GirarButton.setVisibility(View.GONE);
-        MostrarButton.setVisibility(View.GONE);
-
-    }
-
-
+    }*/
 
     public void Start() {
         //tvAppend(textView,"Entro a start");
@@ -194,56 +184,85 @@ public class MujerAtras extends Activity {
     }
 
 
-    public void click_musculo(){
-        countDownTimer.cancel();
-        countDownTimer.start();
-        MostrarButton.setEnabled(true);
+
+    public void Botones_mostrar(){
+        D1Button.setVisibility(View.VISIBLE);
+        D2Button.setVisibility(View.VISIBLE);
+        D3Button.setVisibility(View.VISIBLE);
+        D4Button.setVisibility(View.VISIBLE);
+        D5Button.setVisibility(View.VISIBLE);
     }
 
-
-
-    public void onClickEspalda(View view) {
-        etapa=false;
-        EspaldaButton.setAlpha(1f);
-        string = "v";
-        click_musculo();
-
-
-
-    }
-    public void onClickGluteo(View view) {
-        etapa=false;
-        GluteosButton.setAlpha(1f);
-        string = "b";
-        click_musculo();
+    public void Botones_esconder(){
+        D1Button.setVisibility(View.GONE);
+        D2Button.setVisibility(View.GONE);
+        D3Button.setVisibility(View.GONE);
+        D4Button.setVisibility(View.GONE);
+        D5Button.setVisibility(View.GONE);
     }
 
-    public void onClickMostrar(View view){
+    public void onClickD1(View view) {
+        String string = "q";
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
         Botones_esconder();
-        Observa.setVisibility(View.VISIBLE);}
+        Observa.setVisibility(View.VISIBLE);
+        //countDownTimer.cancel();
+        //startActivity(new Intent(getApplicationContext(), Deporte1.class));
 
-    public void onClickGirar(View view) {
-        countDownTimer.cancel();
-        startActivity(new Intent(getApplicationContext(), Mujer.class));
-        // TODO: pasar a la actividad de espalda
     }
 
+    public void onClickD2(View view) {
+        String string = "w";
+        serialPort.write(string.getBytes());
+        tvAppend(textView, "\nData Sent : " + string + "\n");
+        Botones_esconder();
+        Observa.setVisibility(View.VISIBLE);
+        //countDownTimer.cancel();
+        //startActivity(new Intent(getApplicationContext(), Deporte2.class));
+
+    }
+
+    public void onClickD3(View view) {
+        String string = "e";
+        serialPort.write(string.getBytes());
+        tvAppend(textView, "\nData Sent : " + string + "\n");
+        Botones_esconder();
+        Observa.setVisibility(View.VISIBLE);
+        //countDownTimer.cancel();
+        //startActivity(new Intent(getApplicationContext(), Deporte3.class));
+
+    }
+
+    public void onClickD4(View view) {
+        String string = "r";
+        serialPort.write(string.getBytes());
+        tvAppend(textView, "\nData Sent : " + string + "\n");
+        Botones_esconder();
+        Observa.setVisibility(View.VISIBLE);
+        //countDownTimer.cancel();
+        // startActivity(new Intent(getApplicationContext(), Deporte4.class));
+
+    }
+
+    public void onClickD5(View view) {
+        String string = "t";
+        serialPort.write(string.getBytes());
+        tvAppend(textView, "\nData Sent : " + string + "\n");
+        Botones_esconder();
+        Observa.setVisibility(View.VISIBLE);
+        //countDownTimer.cancel();
+        //startActivity(new Intent(getApplicationContext(), Deporte5.class));
+    }
 
     public void onClickAtras(View view) {
-        if (etapa){
-            countDownTimer.cancel();
-            startActivity(new Intent(getApplicationContext(), Genero.class));
-        }
-        else {
-            etapa=true;
-            Transapernte();
-        }
+        countDownTimer.cancel();
+        startActivity(new Intent(getApplicationContext(), FiltroActivity.class));
 
     }
 
     public void Stop() {
+        //setUiEnabled(false);
         serialPort.close();
         tvAppend(textView,"\nSerial Connection Closed! \n");
 

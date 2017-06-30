@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class Mujer extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
-    Button  AtrasButton,clearButton;
+    Button  AtrasButton,clearButton, MostrarButton;
     ImageButton Brazo1Button, Brazo2Button, Pierna1Button, Pierna2Button, AbdomenButton, GirarButton;
     TextView textView;
     UsbManager usbManager;
@@ -36,10 +36,11 @@ public class Mujer extends Activity {
     ImageView Observa;
     UsbSerialDevice serialPort;
     UsbDeviceConnection connection;
+    String string;
     boolean posicion= true;
     boolean etapa= true;
 
-    CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
+    CountDownTimer countDownTimer = new CountDownTimer(15000, 1000) {
 
         public void onTick(long millisUntilFinished) {
             //TODO: Do something every second
@@ -134,8 +135,8 @@ public class Mujer extends Activity {
         Observa = (ImageView) findViewById(R.id.Observa);
         Observa.setVisibility(View.GONE);
 
-
-
+        MostrarButton = (Button) findViewById(R.id.buttonMostrar);
+        MostrarButton.setEnabled(false);
         AtrasButton = (Button) findViewById(R.id.buttonAtras);
         clearButton = (Button) findViewById(R.id.buttonClear);
         textView = (TextView) findViewById(R.id.textView);
@@ -159,6 +160,7 @@ public class Mujer extends Activity {
         Pierna2Button.setVisibility(View.GONE);
         AbdomenButton.setVisibility(View.GONE);
         GirarButton.setVisibility(View.GONE);
+        MostrarButton.setVisibility(View.GONE);
 
     }
 
@@ -200,48 +202,58 @@ public class Mujer extends Activity {
 
     }
 
-    public void onClickBrazos(View view) {
-        etapa=false;
-        tvAppend(textView, "Brazo"); //TODO: arreglar esto
-        Brazo1Button.setAlpha(1f);
-        Brazo2Button.setAlpha(1f);
+
+    public void click_musculo(){
         countDownTimer.cancel();
         countDownTimer.start();
-        //String string = "z";
+        MostrarButton.setEnabled(true);
+    }
+
+    public void onClickBrazos(View view) {
+        etapa=false;
+        Brazo1Button.setAlpha(1f);
+        Brazo2Button.setAlpha(1f);
+        click_musculo();
+        string = "z";
         //serialPort.write(string.getBytes());
         //tvAppend(textView, "\nData Sent : " + string + "\n");
         //TODO: poner un contador
-        Botones_esconder();
-        Observa.setVisibility(View.VISIBLE);
+        //Botones_esconder();
+        //Observa.setVisibility(View.VISIBLE);
 
     }
 
     public void onClickAbdomen(View view) {
         etapa=false;
         AbdomenButton.setAlpha(1f);
-        countDownTimer.cancel();
-        countDownTimer.start();
-
-        //String string = "x";
+        click_musculo();
+        string = "x";
         //serialPort.write(string.getBytes());
         //tvAppend(textView, "\nData Sent : " + string + "\n");
-        Botones_esconder();
-        Observa.setVisibility(View.VISIBLE);
+        //Botones_esconder();
+        //Observa.setVisibility(View.VISIBLE);
 
     }
     public void onClickPiernas(View view) {
         etapa=false;
         Pierna1Button.setAlpha(1f);
         Pierna2Button.setAlpha(1f);
-        countDownTimer.cancel();
-        countDownTimer.start();
+        click_musculo();
 
-        //String string = "c";
+        string = "c";
         //serialPort.write(string.getBytes());
         //tvAppend(textView, "\nData Sent : " + string + "\n");
+        //Botones_esconder();
+        //Observa.setVisibility(View.VISIBLE);
+
+    }
+
+
+    public void onClickMostrar(View view){
+        serialPort.write(string.getBytes());
+        tvAppend(textView, "\nData Sent : " + string + "\n");
         Botones_esconder();
         Observa.setVisibility(View.VISIBLE);
-
     }
 
     public void onClickGirar(View view) {
@@ -259,6 +271,7 @@ public class Mujer extends Activity {
         else {
             etapa=true;
             Transapernte();
+            MostrarButton.setEnabled(false);
         }
 
     }

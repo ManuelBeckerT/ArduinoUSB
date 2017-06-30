@@ -76,7 +76,7 @@
         <activity android:name=".Deporte4" />
         <activity android:name=".Deporte5" />
         <activity android:name=".Fuerza" />
-        <activity android:name=".Calentamiento" />
+        <activity android:name=".HabilidadActivity" />
         <activity android:name=".Agilidad" />
         <activity android:name=".Entrenamiento" />
         <activity

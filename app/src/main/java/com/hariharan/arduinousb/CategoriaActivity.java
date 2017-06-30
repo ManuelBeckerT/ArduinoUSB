@@ -89,7 +89,6 @@ public class CategoriaActivity extends Activity {
                     serialPort = UsbSerialDevice.createUsbSerialDevice(device, connection);
                     if (serialPort != null) {
                         if (serialPort.open()) { //Set Serial Connection Parameters.
-                            //setUiEnabled(true);
                             serialPort.setBaudRate(9600);
                             serialPort.setDataBits(UsbSerialInterface.DATA_BITS_8);
                             serialPort.setStopBits(UsbSerialInterface.STOP_BITS_1);
@@ -204,8 +203,8 @@ public class CategoriaActivity extends Activity {
         String string = "a";
         Esconder();
         Observa.setVisibility(View.VISIBLE);
-        //serialPort.write(string.getBytes());
-        //tvAppend(textView, "\nData Sent : " + string + "\n");
+        serialPort.write(string.getBytes());
+        tvAppend(textView, "\nData Sent : " + string + "\n");
         //countDownTimer.cancel();
 
     }

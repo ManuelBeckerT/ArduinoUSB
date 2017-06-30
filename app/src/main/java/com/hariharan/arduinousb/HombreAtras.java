@@ -183,9 +183,9 @@ public class HombreAtras extends Activity {
     public void onClickEspalda(View view) {
         etapa=false;
         EspaldaButton.setAlpha(1f);
-        //String string = "v";
-        //serialPort.write(string.getBytes());
-        //tvAppend(textView, "\nData Sent : " + string + "\n");
+        String string = "v";
+        serialPort.write(string.getBytes());
+        tvAppend(textView, "\nData Sent : " + string + "\n");
         countDownTimer.cancel();
         countDownTimer.start();
 
@@ -194,9 +194,9 @@ public class HombreAtras extends Activity {
         etapa=false;
         GluteosButton.setAlpha(1f);
 
-        //String string = "b";
-        //serialPort.write(string.getBytes());
-        //tvAppend(textView, "\nData Sent : " + string + "\n");
+        String string = "b";
+        serialPort.write(string.getBytes());
+        tvAppend(textView, "\nData Sent : " + string + "\n");
         countDownTimer.cancel();
         countDownTimer.start();
     }

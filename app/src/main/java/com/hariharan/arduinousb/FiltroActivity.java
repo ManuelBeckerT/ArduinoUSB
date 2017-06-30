@@ -121,9 +121,6 @@ public class FiltroActivity extends Activity {
     }
 
 
-
-
-
     private void tvAppend(TextView tv, CharSequence text) {
         final TextView ftv = tv;
         final CharSequence ftext = text;

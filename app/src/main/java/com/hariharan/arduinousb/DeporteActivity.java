@@ -37,7 +37,7 @@ public class DeporteActivity extends Activity {
     UsbSerialDevice serialPort;
     UsbDeviceConnection connection;
 
-    CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
+    CountDownTimer countDownTimer = new CountDownTimer(15000, 1000) {
 
         public void onTick(long millisUntilFinished) {
             //TODO: Do something every second

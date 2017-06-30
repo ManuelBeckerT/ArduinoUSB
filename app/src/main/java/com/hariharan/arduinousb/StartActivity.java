@@ -225,7 +225,7 @@ public class StartActivity extends Activity {
 
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            //String string = "0";
+            String string = "0";
             //serialPort.write(string.getBytes());
             //Stop();
             startActivity(new Intent(getApplicationContext(), FiltroActivity.class));
