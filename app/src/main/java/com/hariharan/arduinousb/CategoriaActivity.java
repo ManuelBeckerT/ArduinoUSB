@@ -37,7 +37,7 @@ public class CategoriaActivity extends Activity {
     UsbSerialDevice serialPort;
     UsbDeviceConnection connection;
 
-    CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
+    CountDownTimer countDownTimer = new CountDownTimer(15000, 1000) {
 
         public void onTick(long millisUntilFinished) {
             //TODO: Do something every second
@@ -205,7 +205,6 @@ public class CategoriaActivity extends Activity {
         Observa.setVisibility(View.VISIBLE);
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        //countDownTimer.cancel();
 
     }
 
@@ -256,7 +255,7 @@ public class CategoriaActivity extends Activity {
 
     private void tvAppend(TextView tv, CharSequence text) {
         final TextView ftv = tv;
-        final CharSequence ftext = text;
+        /*final CharSequence ftext = text;
 
         runOnUiThread(new Runnable() {
             @Override
@@ -264,7 +263,7 @@ public class CategoriaActivity extends Activity {
                 ftv.append(ftext);
             }
         });
-    }
+    }*/}
 
     //@Override
     //protected void onDestroy() {

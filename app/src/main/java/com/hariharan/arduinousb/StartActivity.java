@@ -15,6 +15,7 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -47,6 +48,24 @@ public class StartActivity extends Activity {
     MediaPlayer sonido2;
     MediaPlayer sonido3;
     boolean tiempo_sonido;
+
+
+    CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
+
+        public void onTick(long millisUntilFinished) {
+            //TODO: Do something every second
+        }
+
+        public void onFinish() {
+
+            countDownTimer.cancel();
+            tiempo_sonido=true;
+            countDownTimer.start();
+
+
+
+        }
+    }.start();
 
     public void Start() {
         tvAppend(textView, "Conectando\n");
@@ -86,15 +105,19 @@ public class StartActivity extends Activity {
                 if (data.contains("P")) {
                     //if (data.contains("50") || data.contains("P") || data==" P" || data=="P " || data==" P/n" || data=="50/n" || data=="0050" ||data=="0050/n") {
 
-                    tvAppend(textView, "Sonido\n");
-                    star_sonido();
+                    //tvAppend(textView, "Sonido\n");
+                    if (tiempo_sonido){
+                        star_sonido();
+                        tiempo_sonido=false;
+                    }
+
 
                 }
 
                 else {
                     //tvAppend(textView, "2\n");
                     //star_sonido();
-                    tvAppend(textView, "data:"+data+"-\n");
+                    //tvAppend(textView, "data:"+data+"-\n");
                 }
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
@@ -226,19 +249,14 @@ public class StartActivity extends Activity {
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             String string = "0";
-            //serialPort.write(string.getBytes());
-            //Stop();
+            serialPort.write(string.getBytes());
+            tvAppend(textView,"Mando 0 \n");
+            Stop();
             startActivity(new Intent(getApplicationContext(), FiltroActivity.class));
         }
         return super.onTouchEvent(event);
     }
 
-    public void onClickStart(View view) {
-        //String string = "0";
-        //serialPort.write(string.getBytes());
-        //Stop();
-        startActivity(new Intent(getApplicationContext(), FiltroActivity.class));
-    }
 
     public void Stop() {
         setUiEnabled(false);
@@ -254,7 +272,7 @@ public class StartActivity extends Activity {
 
 
     private void tvAppend(TextView tv, CharSequence text) {
-        final TextView ftv = tv;
+        /*final TextView ftv = tv;
         final CharSequence ftext = text;
 
         runOnUiThread(new Runnable() {
@@ -263,7 +281,7 @@ public class StartActivity extends Activity {
                 ftv.append(ftext);
             }
         });
-    }
+    }*/}
 
     //@Override
     //protected void onDestroy() {

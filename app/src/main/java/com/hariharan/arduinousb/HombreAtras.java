@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.felhr.usbserial.UsbSerialDevice;
@@ -27,14 +28,16 @@ import java.util.Map;
 
 public class HombreAtras extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
-    Button  AtrasButton,clearButton;
+    Button  AtrasButton,clearButton, MostrarButton;
     ImageButton EspaldaButton, GluteosButton, GirarButton;
     TextView textView;
     UsbManager usbManager;
+    ImageView Observa;
     UsbDevice device;
     UsbSerialDevice serialPort;
     UsbDeviceConnection connection;
     boolean etapa= true;
+    String string;
 
     CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
 
@@ -125,7 +128,11 @@ public class HombreAtras extends Activity {
         GluteosButton = (ImageButton) findViewById(R.id.buttonGluteo);
         Transapernte();
         GirarButton = (ImageButton) findViewById(R.id.buttonGirar);
+        Observa = (ImageView) findViewById(R.id.Observa);
+        Observa.setVisibility(View.GONE);
 
+        MostrarButton = (Button) findViewById(R.id.buttonMostrar);
+        MostrarButton.setEnabled(false);
 
         AtrasButton = (Button) findViewById(R.id.buttonAtras);
         clearButton = (Button) findViewById(R.id.buttonClear);
@@ -148,6 +155,14 @@ public class HombreAtras extends Activity {
         GluteosButton.setAlpha(0f);
     }
 
+
+    public void Botones_esconder(){
+        EspaldaButton.setVisibility(View.GONE);
+        GluteosButton.setVisibility(View.GONE);
+        GirarButton.setVisibility(View.GONE);
+        MostrarButton.setVisibility(View.GONE);
+
+    }
 
 
     public void Start() {
@@ -178,28 +193,33 @@ public class HombreAtras extends Activity {
     }
 
 
+    public void click_musculo(){
+        countDownTimer.cancel();
+        countDownTimer.start();
+        MostrarButton.setEnabled(true);
+    }
 
 
     public void onClickEspalda(View view) {
         etapa=false;
         EspaldaButton.setAlpha(1f);
-        String string = "v";
-        serialPort.write(string.getBytes());
-        tvAppend(textView, "\nData Sent : " + string + "\n");
-        countDownTimer.cancel();
-        countDownTimer.start();
-
+        string = "v";
+        click_musculo();
     }
     public void onClickGluteo(View view) {
         etapa=false;
         GluteosButton.setAlpha(1f);
 
-        String string = "b";
+        string = "b";
+        click_musculo();
+
+    }
+
+    public void onClickMostrar(View view){
         serialPort.write(string.getBytes());
         tvAppend(textView, "\nData Sent : " + string + "\n");
-        countDownTimer.cancel();
-        countDownTimer.start();
-    }
+        Botones_esconder();
+        Observa.setVisibility(View.VISIBLE);}
 
     public void onClickGirar(View view) {
         countDownTimer.cancel();
@@ -232,7 +252,7 @@ public class HombreAtras extends Activity {
         textView.setText(" ");
     }
 
-    private void tvAppend(TextView tv, CharSequence text) {
+    private void tvAppend(TextView tv, CharSequence text) {/*
         final TextView ftv = tv;
         final CharSequence ftext = text;
 
@@ -242,7 +262,7 @@ public class HombreAtras extends Activity {
                 ftv.append(ftext);
             }
         });
-    }
+    }*/}
 
     //@Override
     //protected void onDestroy() {

@@ -20,8 +20,7 @@
         android:src="@drawable/espalda"
         android:onClick="onClickEspalda"
         android:background="@null"
-        android:layout_marginTop="177dp"
-        android:layout_below="@+id/buttonAtras"
+        android:layout_marginTop="340dp"
         android:layout_centerHorizontal="true"
         />
 
@@ -70,15 +69,17 @@
         style="@android:style/Widget.DeviceDefault.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Observa"
-        android:layout_marginTop="64dp"
-        android:layout_toRightOf="@+id/buttonGirar"
         android:backgroundTint="#29ABE2"
         android:onClick="onClickAtras"
         android:text="Atras"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textColor="#4E4F4F" />
+        android:textColor="#4E4F4F"
+        android:layout_alignTop="@+id/buttonGirar"
+        android:layout_toLeftOf="@+id/buttonGirar"
+        android:layout_toStartOf="@+id/buttonGirar"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp" />
 
 
     <Button
@@ -92,9 +93,11 @@
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="#4E4F4F"
-        android:layout_below="@+id/buttonGluteo"
-        android:layout_alignRight="@+id/buttonAtras"
-        android:layout_alignEnd="@+id/buttonAtras" />
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/buttonGluteo"
+        android:layout_toEndOf="@+id/buttonGluteo"
+        android:layout_marginLeft="77dp"
+        android:layout_marginStart="77dp" />
 
 
 

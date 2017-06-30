@@ -254,7 +254,7 @@ public class MujerAtras extends Activity {
     }
 
     private void tvAppend(TextView tv, CharSequence text) {
-        final TextView ftv = tv;
+        /*final TextView ftv = tv;
         final CharSequence ftext = text;
 
         runOnUiThread(new Runnable() {
@@ -263,7 +263,7 @@ public class MujerAtras extends Activity {
                 ftv.append(ftext);
             }
         });
-    }
+    }*/}
 
     //@Override
     //protected void onDestroy() {

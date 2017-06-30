@@ -95,7 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/fuerza"
-        android:onClick="onClickD1"
+        android:onClick="onClickC1"
         android:layout_marginTop="149dp"
         android:layout_below="@+id/Observa"
         android:layout_alignParentLeft="true"
@@ -139,14 +139,21 @@
 
 
     <Button
+        android:id="@+id/buttonAtras"
+        style="@android:style/Widget.DeviceDefault.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Atras"
-        android:id="@+id/buttonAtras"
+        android:backgroundTint="#29ABE2"
         android:onClick="onClickAtras"
+        android:text="Atras"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#4E4F4F"
         android:layout_above="@+id/textView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_toRightOf="@+id/Observa"
+        android:layout_toEndOf="@+id/Observa"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp" />
 
     <TextView
         android:layout_width="wrap_content"
